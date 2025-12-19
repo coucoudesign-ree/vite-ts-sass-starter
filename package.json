@@ -1,0 +1,33 @@
+{
+  "name": "vite-ts-sass-starter",
+  "description": "Vite + TypeScript + Dart Sass (@use) starter template",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "preview": "vite preview",
+    "clean": "rimraf dist-dev dist-deliver dist-package dist-package-final dist-package-final.zip",
+    "typecheck": "tsc --noEmit",
+    "build:dev": "vite build --mode production",
+    "build:deliver": "vite build --mode deliver",
+    "package": "npm run build:deliver && node build/build-package.js",
+    "verify": "node build/verify-package.js",
+    "preview:package": "npx serve dist-package-final",
+    "zip:package": "cd dist-package-final && zip -r ../dist-package-final.zip ."
+  },
+  "devDependencies": {
+    "@types/node": "^24.8.1",
+    "chalk": "^5.6.2",
+    "fs-extra": "^11.3.3",
+    "rimraf": "^6.0.1",
+    "sass": "^1.93.2",
+    "terser": "^5.44.1",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.7",
+    "vite-plugin-static-copy": "^3.1.4"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.1.0",
+    "gsap": "^3.14.2"
+  }
+}

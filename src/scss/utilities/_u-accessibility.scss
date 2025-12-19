@@ -1,0 +1,34 @@
+// =========================================
+// UTILITIES / ACCESSIBILITY（Linnoa最終版）
+// -----------------------------------------
+// - アクセシビリティ関連の補助クラス
+// - 視覚的非表示・簡易表示制御
+// =========================================
+
+@use "@scss/settings/mixins" as m;
+
+// -----------------------------------------
+// 👁 スクリーンリーダー専用（非表示）
+// -----------------------------------------
+.u-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// エイリアス（後方互換）
+.u-sr-only {
+  @extend .u-visually-hidden;
+}
+
+// -----------------------------------------
+// 🧱 汎用表示制御
+// -----------------------------------------
+.hidden { display: none !important; }
+.visible { display: block !important; }

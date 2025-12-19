@@ -1,0 +1,67 @@
+# ========================================
+# 🧾 Logs
+# ========================================
+logs/
+*.log
+npm-debug.log*
+yarn-*.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ========================================
+# 📦 Node / Build outputs
+# ========================================
+node_modules/
+dist/
+dist-ssr/
+dist-dev/
+dist-deliver/
+dist-package/
+dist-package-final/
+.vite/
+coverage/
+.cache/
+.temp/
+vite-temp/
+
+# ========================================
+# 🔐 Env / Local overrides
+# ========================================
+.env
+.env.*
+!.env.example     # 例示テンプレートのみGit管理対象
+*.local
+
+# ========================================
+# 💻 OS / Editor
+# ========================================
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json  # チーム共有設定だけ残す
+
+# ========================================
+# 🧩 Temp / Backups (project specific)
+# ========================================
+src/_scss_backup*/
+_backup*/
+backup*/
+temp/
+tmp/
+
+# ========================================
+# 🧱 WordPress theme exports (if used)
+# ========================================
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/plugins/
+wp-content/themes/*/node_modules/
+wp-content/themes/*/dist/
+
+# ========================================
+# 🌐 Robots / Public temporary
+# ========================================
+public/robots_src/

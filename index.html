@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- ======================================== -->
+    <!-- ✅ 基本設定 -->
+    <!-- ======================================== -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>%VITE_OG_TITLE%</title>
+    <meta name="description" content="%VITE_OG_DESCRIPTION%" />
+    <link rel="canonical" href="%VITE_SITE_URL%" />
+
+    <!-- ======================================== -->
+    <!-- ✅ OGP設定 -->
+    <!-- ======================================== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="%VITE_OG_TITLE%" />
+    <meta property="og:description" content="%VITE_OG_DESCRIPTION%" />
+    <meta property="og:url" content="%VITE_SITE_URL%" />
+    <meta property="og:site_name" content="%VITE_OG_TITLE%" />
+    <meta property="og:image" content="%VITE_OG_IMAGE%" />
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- ✅ Twitterカード -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="%VITE_OG_TITLE%" />
+    <meta name="twitter:description" content="%VITE_OG_DESCRIPTION%" />
+    <meta name="twitter:image" content="%VITE_OG_IMAGE%" />
+
+    <!-- ======================================== -->
+    <!-- ✅ Favicon / PWA -->
+    <!-- ======================================== -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- ======================================== -->
+    <!-- 🧠 外部リソース（必要に応じて有効化） -->
+    <!-- ======================================== -->
+    <!-- Adobe Fonts -->
+    <!-- <link rel="stylesheet" href="https://use.typekit.net/xxxxxx.css" /> -->
+
+    <!-- Font Awesome -->
+    <!-- <script src="https://kit.fontawesome.com/xxxx.js" crossorigin="anonymous"></script> -->
+
+    <!-- Swiper -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> -->
+
+    <!-- ======================================== -->
+    <!-- ✅ CSSエントリ -->
+    <!-- ======================================== -->
+    <link rel="stylesheet" href="/src/scss/style.scss" />
+
+
+    <!-- ======================================== -->
+    <!-- 📊 Google Tag Manager（任意） -->
+    <!-- ======================================== -->
+    <!-- 
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-XXXXXXX');
+    </script>
+    -->
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <!-- 
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+              height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    -->
+    <!-- End Google Tag Manager -->
+
+    <!-- ======================================== -->
+    <!-- ✅ メインコンテンツ -->
+    <!-- ======================================== -->
+    <main>
+      <h1>🚀 Welcome to your Vite Starter</h1>
+      <p>ここから自由にコーディングを開始できます。</p>
+    </main>
+
+    <!-- ======================================== -->
+    <!-- ✅ JSエントリ -->
+    <!-- ======================================== -->
+    <script type="module" src="/src/ts/components/index.ts"></script>
+  </body>
+</html>

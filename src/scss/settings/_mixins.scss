@@ -1,0 +1,117 @@
+// ==============================================
+// SETTINGS / _mixins.scss
+// ----------------------------------------------
+// - Media Queries（respond / respond-down）
+// - Utility Mixins（shadow / transition）
+// - Typography（heading / fluid-font / fluid-line-height）
+// - 汎用スターター対応版（@use構文）
+// ==============================================
+// 🗓️ 2025-12-19 JST
+// ==============================================
+
+@use "sass:map";
+@use "@scss/settings/functions" as f;
+
+// ----------------------------------------------
+// 🧠 Media Queries
+// ----------------------------------------------
+// ✅ 使用例:
+// @include respond(md) { ... }
+// @include respond-down(1024px) { ... }
+// ----------------------------------------------
+@mixin respond($bp) {
+  @if type-of($bp) == number {
+    @media (min-width: #{$bp}) { @content; }
+  } @else {
+    $breakpoint: f.bp($bp);
+    @if $breakpoint != null {
+      @media (min-width: #{$breakpoint}) { @content; }
+    } @else {
+      @warn "⚠️ respond(): breakpoint '#{$bp}' not found.";
+    }
+  }
+}
+
+@mixin respond-down($bp) {
+  @if type-of($bp) == number {
+    @media (max-width: #{$bp}) { @content; }
+  } @else {
+    $breakpoint: f.bp($bp);
+    @if $breakpoint != null {
+      @media (max-width: #{$breakpoint}) { @content; }
+    } @else {
+      @warn "⚠️ respond-down(): breakpoint '#{$bp}' not found.";
+    }
+  }
+}
+
+// ----------------------------------------------
+// 🌑 Shadow / Transition
+// ----------------------------------------------
+// ✅ 使用例:
+// .card { @include shadow(md); @include transition(opacity); }
+// ----------------------------------------------
+@mixin shadow($key) {
+  box-shadow: f.shadow($key);
+}
+
+@mixin transition($props: all, $duration: 0.3s, $ease: ease-in-out) {
+  transition: $props $duration $ease;
+}
+
+// ----------------------------------------------
+// 🔠 Heading（Typography）
+// ----------------------------------------------
+// ✅ 使用例:
+// h1 { @include heading(h1); }
+// ----------------------------------------------
+@mixin heading($level) {
+  $size-map: (
+    h1: f.font-size(xxxl),
+    h2: f.font-size(xxl),
+    h3: f.font-size(xl),
+    h4: f.font-size(lg),
+    h5: f.font-size(md),
+    h6: f.font-size(sm)
+  );
+
+  $margin-map: (
+    h1: f.space(xl),
+    h2: f.space(lg),
+    h3: f.space(md),
+    h4: f.space(md),
+    h5: f.space(sm),
+    h6: f.space(xs)
+  );
+
+  font-size: map.get($size-map, $level);
+  line-height: f.fluid-line-height(1.2, 1.4);
+  font-weight: 700;
+  margin-bottom: map.get($margin-map, $level);
+}
+
+// ----------------------------------------------
+// ✨ Fluid Typography Mixins
+// ----------------------------------------------
+// ✅ 使用例:
+// .hero-title { @include fluid-font(20, 90); }
+// ----------------------------------------------
+@mixin fluid-font($min, $max) {
+  font-size: f.fluid-value($min, $max);
+}
+
+@mixin fluid-line-height($min: 1.2, $max: 1.5) {
+  line-height: f.fluid-line-height($min, $max);
+}
+
+// ----------------------------------------------
+// 🧩 Utility Mixins（Design Check連携用）
+// ----------------------------------------------
+// ✅ design-check.scss で使用可能に
+// @include debug-var(--demo-h1-clamp, #{f.fluid-clamp(20, 90)});
+// ----------------------------------------------
+@mixin debug-var($name, $value) {
+  :root {
+    #{$name}: #{$value};
+  }
+}

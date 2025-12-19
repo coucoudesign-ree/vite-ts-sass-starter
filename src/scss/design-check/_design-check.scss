@@ -1,0 +1,190 @@
+// ==============================================
+// DESIGN CHECK / _design-check.scss
+// ----------------------------------------------
+// - Sassトークンとfluid設計の確認用スタイル
+// - design-check.htmlと連携
+// ----------------------------------------------
+// 🗓️ 2025-12-19 JST
+// ==============================================
+
+@use "@scss/settings/functions" as f;
+@use "@scss/settings/mixins" as m;
+@use "@scss/settings/variables" as v;
+
+// ----------------------------------------------
+// 🌐 :root デモ変数出力
+// ----------------------------------------------
+// - design-check.htmlで取得されるCSS変数
+// - fluid-clamp()で可変確認
+// ----------------------------------------------
+:root {
+  // 🧱 Fluid Typography
+  --demo-h1-clamp: #{f.fluid-value(32px, 96px)};
+  --demo-h2-clamp: #{f.fluid-value(24px, 72px)};
+  --demo-p-clamp: #{f.fluid-value(14px, 20px)};
+
+  // 🧩 Layout spacing / container
+  --demo-section-padding: #{f.fluid-space(md, xl)};
+  --demo-card-gap: #{f.fluid-space(sm, lg)};
+  --demo-container-width: #{f.fluid-value(320px, 1200px)};
+
+  // 🎨 Palette reference
+  --demo-color-primary: #{f.color(primary)};
+  --demo-color-accent: #{f.color(accent)};
+  --demo-color-bg: #{f.color(white)};
+  --demo-color-text: #{f.color(neutral-900)};
+}
+
+// ----------------------------------------------
+// 🧩 ページ全体の基礎スタイル
+// ----------------------------------------------
+body {
+  font-family: v.$font-family-base;
+  background: var(--demo-color-bg);
+  color: var(--demo-color-text);
+  font-size: f.font-size(base);
+  line-height: f.line-height(base);
+  padding-bottom: f.space(xl);
+}
+
+// ----------------------------------------------
+// 🎯 Typography demo
+// ----------------------------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: v.$font-family-heading;
+  font-weight: 600;
+  color: f.color(primary);
+}
+
+h1 {
+  font-size: var(--demo-h1-clamp);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: var(--demo-h2-clamp);
+  line-height: 1.3;
+}
+
+p {
+  font-size: var(--demo-p-clamp);
+  line-height: 1.8;
+  max-width: 65ch;
+}
+
+// ----------------------------------------------
+// 🧱 Layout blocks
+// ----------------------------------------------
+.l-section {
+  padding-block: var(--demo-section-padding);
+  border-bottom: 1px solid f.color(neutral-300);
+}
+
+.l-container {
+  max-width: var(--demo-container-width);
+  margin-inline: auto;
+  padding-inline: f.space(md);
+}
+
+.u-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--demo-card-gap);
+}
+
+.c-card {
+  background: f.color(neutral-100);
+  padding: f.space(lg);
+  border-radius: f.radius(md);
+  box-shadow: f.shadow(sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: f.shadow(md);
+  }
+
+  h3 {
+    margin-bottom: f.space(sm);
+    font-size: f.font-size(lg);
+    color: f.color(neutral-500);
+  }
+
+  p {
+    color: f.color(neutral-700);
+    font-size: f.font-size(base);
+  }
+}
+
+// ----------------------------------------------
+// 🎛️ Utility boxes
+// ----------------------------------------------
+.c-demo-box {
+  background: f.color(neutral-600);
+  border-radius: f.radius(sm);
+  padding: f.space(lg);
+  text-align: center;
+  font-size: f.font-size(md);
+  box-shadow: f.shadow(sm);
+}
+
+.c-panel {
+  background: f.color(neutral-300);
+  border: 1px solid f.color(neutral-400);
+  border-radius: f.radius(sm);
+  padding: f.space(md);
+  font-size: f.font-size(sm);
+}
+
+.c-panel__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: f.space(xs);
+}
+
+.c-panel__pill {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: f.space(sm);
+  padding-block: f.space(xs);
+  border-radius: f.radius(full);
+  background: f.color(neutral-300);
+  color: f.color(neutral-700);
+  font-size: f.font-size(sm);
+}
+
+// ----------------------------------------------
+// 🧭 Breakpoint bar
+// ----------------------------------------------
+.l-bpbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: f.color(neutral-300);
+  padding: f.space(xs) f.space(sm);
+  z-index: f.z(overlay);
+
+  &__item {
+    flex: 1;
+    text-align: center;
+    padding: f.space(xs);
+    font-size: f.font-size(xs);
+    opacity: 0.4;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+
+    &.is-active {
+      opacity: 1;
+      background: f.color(primary);
+      color: f.color(white);
+      border-radius: f.radius(xs);
+    }
+  }
+}

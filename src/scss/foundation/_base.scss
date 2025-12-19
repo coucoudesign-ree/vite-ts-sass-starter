@@ -1,0 +1,102 @@
+// =========================================
+// FOUNDATION / _base.scss
+// -----------------------------------------
+// - Reset後のベーススタイル
+// - Fluid設計 / タイポグラフィ / トーン設定
+// =========================================
+// 🗓️ 2025-12-19 JST
+// =========================================
+
+@use "@scss/settings/functions" as f;
+@use "@scss/settings/mixins" as m;
+@use "@scss/settings/variables" as v;
+
+// ----------------------------------------------
+// 🧱 HTML / BODY
+// ----------------------------------------------
+html {
+  font-size: f.font-size(base);
+  font-feature-settings: "palt";
+  scroll-behavior: auto; // JS(GSAP)制御を想定
+}
+
+body {
+  font-family: v.$font-family-base;
+  font-weight: 400;
+  font-size: f.font-size(base);
+  line-height: f.line-height(base);
+  color: f.color(neutral-900);
+  background-color: f.color(white);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
+
+// ✅ セクション間余白（Fluid対応）
+.l-section:not(:last-of-type) {
+  margin-bottom: f.fluid-space(md, xl);
+}
+
+// ----------------------------------------------
+// 🔗 リンクスタイル
+// ----------------------------------------------
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease, opacity 0.25s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: f.color(primary);
+    opacity: 0.85;
+    outline: none;
+  }
+}
+
+// ----------------------------------------------
+// 🧩 ボタン
+// ----------------------------------------------
+button {
+  cursor: pointer;
+  transition: opacity 0.25s ease, transform 0.2s ease;
+
+  &:hover:not([disabled]) {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+// ----------------------------------------------
+// 🖼️ メディア要素
+// ----------------------------------------------
+img {
+  border-style: none;
+  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+}
+
+// ----------------------------------------------
+// 🧩 テキスト補助要素
+// ----------------------------------------------
+strong,
+b {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+mark {
+  background-color: f.color(neutral-100);
+  color: f.color(primary);
+  padding-inline: 0.25em;
+  border-radius: f.radius(xs);
+}

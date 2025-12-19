@@ -1,0 +1,36 @@
+// ==============================================
+// STYLE ENTRY POINT（Vite対応・Fluidスターター最小構成）
+// ----------------------------------------------
+// ✅ 現状の目的：確実にビルド成功するベース構成
+// ==============================================
+
+@use "sass:math";
+
+// ----------------------------------------------
+// 1️⃣ Settings（Design Tokens / Core System）
+// ----------------------------------------------
+@use "@scss/settings/variables" as *;  // トークン
+@use "@scss/settings/functions" as f;  // 関数
+@use "@scss/settings/mixins" as m;     // Mixin
+
+// ----------------------------------------------
+// 🎨 FontAwesome（アイコンフォント）
+// ----------------------------------------------
+@use "@fortawesome/fontawesome-free/scss/fontawesome";
+@use "@fortawesome/fontawesome-free/scss/solid";
+
+// ----------------------------------------------
+// 2️⃣ Foundation（土台 / 初期設定）
+// ----------------------------------------------
+@use "@scss/foundation/reset";         // 初期化
+@use "@scss/foundation/base";          // ベーススタイル
+@use "@scss/foundation/typography";    // 見出し・本文・リンク
+
+// ----------------------------------------------
+// 🚧 今後追加予定のモジュール
+// ----------------------------------------------
+// @use "@scss/layout/l-index";
+// @use "@scss/components/c-index";
+// @use "@scss/utilities/u-index";
+// @use "@scss/project/p-index";
+// @use "@scss/design-check/design-check";

@@ -1,0 +1,177 @@
+// ==============================================
+// SETTINGS / _functions.scss（Dart Sass 3.0 完全対応）
+// ----------------------------------------------
+// px → rem変換、トークン取得関数群 + Fluid補間関数
+// - 新構文 if(sass(...): ... else: ...) 対応
+// - 二段階fluid補間（320〜375軽補間 + 375〜1920通常補間）
+// ==============================================
+
+@use "sass:math";
+@use "sass:map";
+@use "sass:string";
+@use "sass:meta";
+@use "@scss/settings/variables" as v;
+
+// ----------------------------------------------
+// 🌊 Fluid補間共通設定（参照専用）
+// ----------------------------------------------
+$fluid-min-width: v.$fluid-min-width;
+$fluid-max-width: v.$fluid-max-width;
+
+// ----------------------------------------------
+// ⚙️ Utility Functions
+// ----------------------------------------------
+@function strip-unit($number) {
+  @if math.is-unitless($number) {
+    @return $number;
+  }
+  @return math.div($number, ($number * 0 + 1));
+}
+
+@function to-rem($value) {
+  @if math.unit($value) == "px" {
+    @return math.div(strip-unit($value), 16) * 1rem;
+  }
+  @return $value;
+}
+
+@function rem($value, $base: 16) {
+  @if math.is-unitless($value) {
+    @return math.div($value, $base) * 1rem;
+  } @else if math.unit($value) == "px" {
+    @return math.div($value, $base) * 1rem;
+  } @else {
+    @return $value;
+  }
+}
+
+// ----------------------------------------------
+// 🎨 Color
+// ----------------------------------------------
+@function color($key, $fallback: null) {
+  @if map.has-key(v.$colors, $key) {
+    @return map.get(v.$colors, $key);
+  } @else if $fallback != null {
+    @return if(sass(map.has-key(v.$colors, $fallback)): map.get(v.$colors, $fallback); else: $fallback);
+  }
+  @error "❌ Unknown color key: #{$key}. Check _variables.scss";
+}
+
+// ----------------------------------------------
+// 🎛️ border-radius 関数
+// ----------------------------------------------
+@function radius($size) {
+  @return map.get(v.$border-radius, $size);
+}
+
+// ----------------------------------------------
+// 📏 Space / Font Size / Line Height / Shadow
+// ----------------------------------------------
+@function space($key, $as-rem: true) {
+  @if $key == 0 { @return 0; }
+  @if map.has-key(v.$spaces, $key) {
+    $v: map.get(v.$spaces, $key);
+    @return if(sass($as-rem): rem($v); else: $v);
+  }
+  @error "❌ Unknown space key: #{$key}.";
+}
+
+@function font-size($key, $as-rem: true) {
+  @if map.has-key(v.$font-sizes, $key) {
+    $v: map.get(v.$font-sizes, $key);
+    @return if(sass($as-rem): rem($v); else: $v);
+  }
+  @error "❌ Unknown font-size key: #{$key}.";
+}
+
+@function line-height($key) {
+  @if map.has-key(v.$line-heights, $key) {
+    @return map.get(v.$line-heights, $key);
+  }
+  @error "❌ Unknown line-height key: #{$key}.";
+}
+
+@function shadow($key) {
+  @if map.has-key(v.$shadows, $key) {
+    @return map.get(v.$shadows, $key);
+  }
+  @error "❌ Unknown shadow key: #{$key}.";
+}
+
+@function z($key) {
+  @if map.has-key(v.$z-index, $key) {
+    @return map.get(v.$z-index, $key);
+  }
+  @error "❌ Unknown z-index key: #{$key}.";
+}
+
+@function bp($key) {
+  @if map.has-key(v.$breakpoints, $key) {
+    @return map.get(v.$breakpoints, $key);
+  }
+  @error "❌ Unknown breakpoint key: #{$key}.";
+}
+
+// ----------------------------------------------
+// 🌊 fluid-value()（二段階fluid補間対応）
+// ----------------------------------------------
+@function fluid-value(
+  $min,
+  $max: null,
+  $min-width: 320px,
+  $mid-width: 375px,
+  $max-width: 1920px
+) {
+  // mapキー対応
+  @if meta.type-of($min) == "string" { $min: map.get(v.$font-sizes, $min); }
+  @if $max != null and meta.type-of($max) == "string" { $max: map.get(v.$font-sizes, $max); }
+
+  $min: to-rem($min);
+  $max: if(sass($max == null): $min; else: to-rem($max));
+
+  // 1値指定時
+  @if $max == null or $max == $min {
+    @return string.unquote("clamp(#{$min}, calc(#{$min} + ((100vw - #{$min-width}) / 100)), calc(#{$min} * 1.5))");
+  }
+
+  // ✅ 二段階fluid補間（320〜375軽補間 / 375〜1920通常補間）
+  @return string.unquote("clamp(#{$min}, calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$mid-width}) / (#{$max-width} - #{$mid-width}))), #{$max})");
+}
+
+// ----------------------------------------------
+// 🧩 fluid-space()（同範囲で可変）
+// ----------------------------------------------
+@function fluid-space($min, $max: null, $min-width: 320px, $mid-width: 375px, $max-width: 1920px) {
+  @if meta.type-of($min) == "string" { $min: space($min, false); }
+  @if $max != null and meta.type-of($max) == "string" { $max: space($max, false); }
+
+  $min: to-rem($min);
+  $max: if(sass($max == null): $min; else: to-rem($max));
+
+  @return fluid-value($min, $max, $min-width, $mid-width, $max-width);
+}
+
+// ----------------------------------------------
+// 🧩 fluid-line-height()（同範囲で可変）
+// ----------------------------------------------
+@function fluid-line-height($min, $max: null, $min-width: 320px, $mid-width: 375px, $max-width: 1920px) {
+  @if meta.type-of($min) == "string" { $min: map.get(v.$line-heights, $min); }
+  @if $max != null and meta.type-of($max) == "string" { $max: map.get(v.$line-heights, $max); }
+
+  @if $max == null or $max == $min { @return $min; }
+
+  @return string.unquote("clamp(#{$min}, calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$mid-width}) / (#{$max-width} - #{$mid-width}))), #{$max})");
+}
+
+// ----------------------------------------------
+// 🧮 fluid-clamp()（fluid-value() のエイリアス）
+// ----------------------------------------------
+@function fluid-clamp(
+  $min,
+  $max: null,
+  $min-width: 320px,
+  $mid-width: 375px,
+  $max-width: 1920px
+) {
+  @return fluid-value($min, $max, $min-width, $mid-width, $max-width);
+}
