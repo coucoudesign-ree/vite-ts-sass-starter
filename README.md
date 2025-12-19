@@ -3,31 +3,22 @@
 🧱 Vite + TypeScript + Dart Sass (@use構文)
 
 🧩 3ビルド構成対応
-
 dist-dev（開発ビルド）
-
 dist-deliver（公開用ビルド）
-
 dist-package-final（納品パッケージ）
 
 🧰 Utility Scripts
-
 build-package.js（納品パッケージ生成）
-
 verify-package.js（納品ファイル検証）
 
 🌐 モード別 robots.txt / favicon / .env 対応
 
 🎨 Sass設計済み構造
-
 settings / foundation / layout / components / utilities / design-check
 
 📘 ドキュメント付属
-
 docs/PROJECT_SETUP.md … 初期セットアップ
-
 docs/STRUCTURE_GUIDE.md … ディレクトリ説明
-
 docs/OPERATIONS_RULES.md … 運用ルール
 
 ⚙️ セットアップ手順
@@ -43,7 +34,6 @@ npm run dev
 
 
 ブラウザが自動的に起動します：
-
 👉 http://localhost:5173
 
 🧠 Design Check（Fluid設計確認）
