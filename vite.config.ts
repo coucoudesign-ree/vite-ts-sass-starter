@@ -1,62 +1,53 @@
-// ========================================
-// ⚙️ Vite設定（3ビルド：dist-dev / dist-deliver / dist-package）
-// ----------------------------------------
-// ✅ build:dev     → dist-dev（非公開・検索除外）
-// ✅ build:deliver → dist-deliver（公開）
-// ✅ build:package → dist-package（納品・公開）
-// ========================================
-
 import { defineConfig, loadEnv } from "vite";
 import path from "path";
-import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
 
-  const outputDirMap: Record<string, string> = {
-    production: "dist-dev",
-    deliver: "dist-deliver",
-    package: "dist-package"
-  };
-  const outDir = outputDirMap[mode] ?? "dist";
-
-  const isPackage = mode === "package";
-
-  // ✅ robots.txt をモードごとに切替
-  const robotsSrcMap: Record<string, string> = {
-    production: path.resolve(__dirname, "public/robots_src/robots.dev.txt"), // 開発
-    deliver: path.resolve(__dirname, "public/robots_src/robots.deliver.txt"), // 本番
-    package: path.resolve(__dirname, "public/robots_src/robots.deliver.txt")  // 納品も公開想定
-  };
-
-  console.log(`🚀 Build mode: ${mode}`);
-  console.log(`📦 outDir: ${outDir}`);
-  console.log(`🌐 SITE_URL: ${env.VITE_SITE_URL || "(not set)"}`);
+  // WPテーマでは、ビルド後のファイルをテーマ内の 'dist' フォルダに集約するのが一般的です
+  const outDir = "dist";
 
   return {
-    base: isPackage ? "./" : "/",
+    // 1. WPテーマ内のパスを通すため、ベースパスを空にするか相対パスにします
+    base: "./",
     root: ".",
-    publicDir: false,
 
     server: {
       port: 5174,
-      open: true,
-      host: true
+      strictPort: true, // ポート番号を固定
+      cors: true, // ブラウザのセキュリティガードを許可します
+      origin: 'http://localhost:5174',
+      hmr: {
+        host: 'localhost', // WordPressから見に行く先のホスト
+      },
+      proxy: {
+        '^/(?!@vite|src|node_modules|@scss|@assets).*': {
+          target: 'http://wp-vite-lab.local', // 最後に / は不要です
+          changeOrigin: true,
+        },
+      },
+      fs: {
+        allow: [
+          path.resolve(__dirname, '.'),
+          path.resolve(__dirname, 'src')
+        ]
+      }
     },
 
     build: {
       outDir,
       emptyOutDir: true,
-      sourcemap: mode === "production",
-      minify: "terser",
+      // 3. index.html ではなく、JSとCSSを直接ビルドの入り口にします
       rollupOptions: {
         input: {
-          main: path.resolve(__dirname, "index.html")
+          main: path.resolve(__dirname, "src/ts/components/index.ts"), // メインのJS
+          style: path.resolve(__dirname, "src/scss/style.scss"), // メインのSass
         },
         output: {
-          assetFileNames: "assets/[name]-[hash][extname]",
-          chunkFileNames: "assets/[name]-[hash].js",
-          entryFileNames: "assets/[name]-[hash].js"
+          // WPで読み込みやすいよう、ハッシュ（[hash]）を外した固定名にするのがコツです
+          assetFileNames: "assets/[name].[ext]",
+          chunkFileNames: "assets/[name].js",
+          entryFileNames: "assets/[name].js"
         }
       }
     },
@@ -74,29 +65,13 @@ export default defineConfig(({ mode }) => {
       preprocessorOptions: {
         scss: {
           additionalData: `
-@use "@scss/settings/_variables.scss" as *;
-@use "@scss/settings/_mixins.scss" as *;
+            @use "@scss/settings/_variables.scss" as *;
+            @use "@scss/settings/_mixins.scss" as *;
           `
         }
       }
     },
-
-    plugins: [
-      viteStaticCopy({
-        targets: [
-          {
-            src: robotsSrcMap[mode] ?? robotsSrcMap.production,
-            dest: "",
-            rename: "robots.txt"
-          },
-          { src: "public/favicon.ico", dest: "" },
-          { src: "public/apple-touch-icon.png", dest: "" },
-          { src: "public/favicon-16x16.png", dest: "" },
-          { src: "public/favicon-32x32.png", dest: "" },
-          { src: "public/ogp.jpg", dest: "" },
-          { src: "public/site.webmanifest", dest: "" }
-        ]
-      })
-    ]
+    // 一旦、静的コピー（robots.txtなど）はWP側で管理するためプラグインは外してスッキリさせます
+    plugins: []
   };
 });
