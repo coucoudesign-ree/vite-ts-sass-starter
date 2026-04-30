@@ -96,5 +96,26 @@ src/scss/
     Dart Sass
     TypeScript Vue Plugin
 
+📋 フォームテンプレート（api/sendmail.php）
+プロジェクト派生時に変更が必要な箇所：
+
+① 環境変数（.env.example をコピーして設定）
+    MAIL_TO      … 管理者の受信メールアドレス
+    MAIL_FROM    … 送信元アドレス（サーバー許可ドメインに合わせる）
+    SITE_NAME    … メール件名に使うサイト名
+    THANKS_URL   … 送信完了後のリダイレクト先
+
+② ハニーポットフィールド名（api/sendmail.php L80）
+    'nickname' → プロジェクトごとに別の名前に変更する
+    （公開テンプレートのため、同名フィールドをボットに学習される可能性がある）
+
+③ HTML フォームの id 属性
+    form-handler.ts のデフォルト: #js-contact-form
+    zip.ts のデフォルト: #postcode → #address
+
+④ ログファイルの保護
+    Apache: api/logs/.htaccess 作成済み（Require all denied）
+    Nginx:  location /api/logs/ { deny all; } をサーバー設定に追加
+
 🧑‍💻 Author
 @matsuokarie

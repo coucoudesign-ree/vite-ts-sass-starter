@@ -1,0 +1,2 @@
+# ログファイルへの直接 Web アクセスを全拒否
+Require all denied
