@@ -31,7 +31,7 @@ const initOpeningAnimation = () => {
   gsap.set(logo, { autoAlpha: 0 }); // ロゴを非表示に
 
   // ページ読み込み完了時にアニメーションを開始
-  window.addEventListener("load", () => {
+  const startAnimation = () => {
     try {
       sessionStorage.setItem(STORAGE_KEY, "true"); // 同一セッション内は1度だけ再生
     } catch (error) {
@@ -73,7 +73,13 @@ const initOpeningAnimation = () => {
         },
         "+=0.33"
       );
-  });
+  };
+
+  if (document.readyState === "complete") {
+    startAnimation();
+  } else {
+    window.addEventListener("load", startAnimation);
+  }
 };
 
 initOpeningAnimation();
