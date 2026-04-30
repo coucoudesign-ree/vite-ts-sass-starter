@@ -33,9 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
     drawerBtn.setAttribute("aria-expanded", "false");
     drawerNav.setAttribute("aria-hidden", "true");
 
-    // bodyスクロール解除
+    // bodyスクロール解除 + 位置復元
+    const top = document.body.style.top;
     document.body.classList.remove("is-fixed");
     document.body.style.top = "";
+    const y = top ? Math.abs(parseInt(top, 10)) : 0;
+    window.scrollTo({ top: y });
   };
 
   // ------------------------------

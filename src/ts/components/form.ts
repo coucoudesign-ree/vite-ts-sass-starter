@@ -11,8 +11,6 @@ if (form && submitBtn) {
     const formData = new FormData(form);
     const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
 
-    console.log('使用中のキー:', accessKey); // 確認ログ（ここでundefinedならVercel側問題）
-
     formData.set('access_key', accessKey);
 
     try {

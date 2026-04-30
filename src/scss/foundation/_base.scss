@@ -18,6 +18,7 @@ html {
   font-size: f.font-size(base);
   font-feature-settings: "palt";
   scroll-behavior: auto; // JS(GSAP)制御を想定
+  
 }
 
 body {
@@ -36,22 +37,6 @@ body {
 // ✅ セクション間余白（Fluid対応）
 .l-section:not(:last-of-type) {
   margin-bottom: f.fluid-space(md, xl);
-}
-
-// ----------------------------------------------
-// 🔗 リンクスタイル
-// ----------------------------------------------
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.25s ease, opacity 0.25s ease;
-
-  &:hover,
-  &:focus-visible {
-    color: f.color(primary);
-    opacity: 0.85;
-    outline: none;
-  }
 }
 
 // ----------------------------------------------
