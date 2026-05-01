@@ -1,7 +1,10 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import path from "path";
 
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  const wpUrl = env.VITE_WP_URL || 'http://wp-vite-lab.local';
+
   // WPテーマでは、ビルド後のファイルをテーマ内の 'dist' フォルダに集約するのが一般的です
   const outDir = "dist";
 
@@ -20,7 +23,7 @@ export default defineConfig(() => {
       },
       proxy: {
         '^/(?!@vite|src|node_modules|@scss|@assets).*': {
-          target: 'http://wp-vite-lab.local', // 最後に / は不要です
+          target: wpUrl, // VITE_WP_URL（.env で設定）
           changeOrigin: true,
         },
       },
