@@ -8,7 +8,8 @@ import { initSmoothScroll } from './smooth-scroll';
 import { initPagetop } from './pagetop';
 import { initSwiper } from './swiper';
 import { initInstagram } from './instagram';
-// Web3Forms 外部サービス版: import { initContactForm } from './form';
+import { initModal } from './modal';
+import { initAccordion } from './accordion';
 import { initForm } from '../form/form-handler';
 import { initZipLookup } from '../form/zip';
 
@@ -22,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // オプションコンポーネント（該当要素が存在する場合のみ初期化）
   if (document.querySelector('.swiper')) initSwiper();
   if (document.querySelector('#insta-feed')) void initInstagram();
+  if (document.querySelector('[data-modal-trigger]')) initModal();
+  if (document.querySelector('.c-accordion')) initAccordion();
   if (document.querySelector('#js-contact-form')) {
     initForm();
     initZipLookup();
