@@ -35,5 +35,5 @@
 @use "@scss/components/accordion";
 // @use "@scss/components/c-index";
 // @use "@scss/utilities/u-index";
-// @use "@scss/project/p-index";
+@use "@scss/project/p-sample"; // サンプルページ用（本番では不要なものを削除）
 @use "@scss/design-check/design-check";

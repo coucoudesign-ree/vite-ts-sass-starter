@@ -1,7 +1,10 @@
 <?php
 /**
- * LP テンプレート（メインインデックス）
- * WordPress Theme: Vite Starter
+ * Template Name: Corporate
+ * Template Post Type: page
+ *
+ * コーポレートサイト用固定ページテンプレート
+ * WordPress 管理画面：固定ページ → テンプレート「Corporate」を選択
  */
 get_header();
 ?>
@@ -9,141 +12,123 @@ get_header();
 <main>
 
   <!-- ========================================
-       オープニングアニメーション
-  ======================================== -->
-  <div data-opening-animation aria-hidden="true"
-       style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#0f0f1a;">
-    <p data-opening-animation="text"
-       style="position:absolute;font-size:clamp(1rem,3vw,1.5rem);font-weight:700;letter-spacing:0.2em;color:#fff;text-transform:uppercase;">
-      Crafting Digital Experience
-    </p>
-    <div data-opening-animation="logo"
-         style="font-size:clamp(2rem,6vw,3.5rem);font-weight:700;color:#fff;letter-spacing:0.1em;">
-      <?php bloginfo('name'); ?>
-    </div>
-  </div>
-
-  <!-- ========================================
        Hero
   ======================================== -->
-  <section id="hero" class="p-hero">
+  <section id="hero" class="p-hero p-hero--light">
     <div class="l-container p-hero__inner">
-      <p class="p-hero__label">Web Design &amp; Development</p>
-      <h1 class="p-hero__title">
-        あなたのビジョンを、<br>
-        デジタルで体現する。
+      <p class="p-hero__label">Leading Digital Innovation</p>
+      <h1 class="p-hero__title" style="color:#171717;">
+        テクノロジーで、<br>
+        ビジネスを次のステージへ。
       </h1>
-      <p class="p-hero__lead">
-        <?php bloginfo('name'); ?> は、最新のフロントエンド技術で<br>
-        ブランドの世界観を体験価値として届けます。
+      <p class="p-hero__lead" style="color:#525252;">
+        <?php bloginfo('name'); ?> は、DX 推進・システム開発・データ分析を通じて<br>
+        企業の持続的成長をテクノロジーで支援します。
       </p>
       <div class="p-hero__actions">
         <a href="#contact" class="c-btn c-btn--primary">お問い合わせ</a>
-        <a href="#works" class="c-btn c-btn--outline">実績を見る</a>
+        <a href="#about" class="c-btn c-btn--outline-dark">会社概要を見る</a>
       </div>
     </div>
   </section>
 
   <!-- ========================================
-       About
+       About（会社概要）
   ======================================== -->
   <section id="about" class="l-section">
     <div class="l-container">
-      <div class="p-about__grid">
-        <div class="p-about__image">
-          <?php
-          // アイキャッチ画像があれば表示、なければプレースホルダー
-          if (has_post_thumbnail()) {
-            the_post_thumbnail('large', ['loading' => 'lazy', 'alt' => '']);
-          } else {
-            echo '<span>画像エリア（400×300 推奨）</span>';
-          }
-          ?>
-        </div>
-        <div>
-          <div class="p-section-header" style="text-align:left;">
-            <p class="p-section-label">About Us</p>
-            <h2 class="p-section-title">最高の体験を、<br>すべてのデバイスで。</h2>
-          </div>
-          <div class="p-about__points">
-            <div class="p-about__point">
-              <div class="p-about__point-icon" aria-hidden="true">
-                <i class="fas fa-bolt"></i>
-              </div>
-              <div>
-                <p class="p-about__point-title">高速パフォーマンス</p>
-                <p class="p-about__point-text">Vite + 最適化ビルドで、初回表示を極限まで高速化。コアウェブバイタルを改善します。</p>
-              </div>
-            </div>
-            <div class="p-about__point">
-              <div class="p-about__point-icon" aria-hidden="true">
-                <i class="fas fa-mobile-screen"></i>
-              </div>
-              <div>
-                <p class="p-about__point-title">レスポンシブ設計</p>
-                <p class="p-about__point-text">Fluid Design で全デバイスに最適なレイアウトを提供します。</p>
-              </div>
-            </div>
-            <div class="p-about__point">
-              <div class="p-about__point-icon" aria-hidden="true">
-                <i class="fas fa-universal-access"></i>
-              </div>
-              <div>
-                <p class="p-about__point-title">アクセシビリティ対応</p>
-                <p class="p-about__point-text">WCAG 2.1 基準に準拠したマークアップで、すべてのユーザーに届くサイトを制作します。</p>
-              </div>
-            </div>
-          </div>
+      <div class="p-section-header">
+        <p class="p-section-label">About</p>
+        <h2 class="p-section-title">会社概要</h2>
+      </div>
+
+      <div style="max-width:800px;margin-inline:auto;">
+        <table class="p-about__table">
+          <tbody>
+            <tr>
+              <th scope="row">社名</th>
+              <td><?php bloginfo('name'); ?></td>
+            </tr>
+            <tr>
+              <th scope="row">設立</th>
+              <td>2020年 4月</td>
+            </tr>
+            <tr>
+              <th scope="row">代表取締役</th>
+              <td>山田 太郎</td>
+            </tr>
+            <tr>
+              <th scope="row">資本金</th>
+              <td>1,000万円</td>
+            </tr>
+            <tr>
+              <th scope="row">従業員数</th>
+              <td>50名（2025年4月現在）</td>
+            </tr>
+            <tr>
+              <th scope="row">所在地</th>
+              <td>〒100-0001 東京都千代田区千代田1-1-1</td>
+            </tr>
+            <tr>
+              <th scope="row">事業内容</th>
+              <td>DXコンサルティング、システム開発、データ分析・AI ソリューション</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="text-align:center;margin-top:2.5rem;">
+          <button type="button" class="c-btn c-btn--outline-dark" data-modal-trigger="about-modal">
+            アクセス・詳細を見る
+          </button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ========================================
-       Service
+       Service（事業内容）
   ======================================== -->
-  <section id="service" class="l-section l-section--dark">
+  <section id="service" class="l-section l-section--gray">
     <div class="l-container">
       <div class="p-section-header">
         <p class="p-section-label">Service</p>
-        <h2 class="p-section-title">提供サービス</h2>
-        <p class="p-section-desc">デザインから実装・運用まで、ワンストップでサポートします。</p>
+        <h2 class="p-section-title">事業内容</h2>
+        <p class="p-section-desc">お客様のビジネス課題に合わせた最適なソリューションを提供します。</p>
       </div>
       <div class="p-service__grid">
         <article class="p-service__card">
-          <div class="p-service__card-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></div>
-          <h3 class="p-service__card-title">UI / UX デザイン</h3>
-          <p class="p-service__card-text">ユーザー調査から情報設計、プロトタイプ制作まで。コンバージョンを最大化するデザインを提供します。</p>
+          <div class="p-service__card-icon" aria-hidden="true"><i class="fas fa-chart-line"></i></div>
+          <h3 class="p-service__card-title">DX コンサルティング</h3>
+          <p class="p-service__card-text">現状分析から戦略立案・導入支援まで。業務効率化と競争力強化を一貫してサポートします。</p>
         </article>
         <article class="p-service__card">
-          <div class="p-service__card-icon" aria-hidden="true"><i class="fas fa-code"></i></div>
-          <h3 class="p-service__card-title">フロントエンド開発</h3>
-          <p class="p-service__card-text">Vite + TypeScript + Sass の最新スタックで、保守性の高いコードベースを構築します。</p>
+          <div class="p-service__card-icon" aria-hidden="true"><i class="fas fa-server"></i></div>
+          <h3 class="p-service__card-title">システム開発</h3>
+          <p class="p-service__card-text">要件定義からリリース・保守まで。スモールスタートで素早く価値を届けるアジャイル開発を推進します。</p>
         </article>
         <article class="p-service__card">
-          <div class="p-service__card-icon" aria-hidden="true"><i class="fas fa-wordpress"></i></div>
-          <h3 class="p-service__card-title">WordPress 開発</h3>
-          <p class="p-service__card-text">カスタムテーマ・プラグイン開発から保守運用まで。編集しやすい CMS 環境を構築します。</p>
+          <div class="p-service__card-icon" aria-hidden="true"><i class="fas fa-brain"></i></div>
+          <h3 class="p-service__card-title">データ分析 / AI</h3>
+          <p class="p-service__card-text">蓄積されたデータを価値ある知見に変換。機械学習モデルの構築から運用まで対応します。</p>
         </article>
       </div>
     </div>
   </section>
 
   <!-- ========================================
-       Works
+       Works（実績）
   ======================================== -->
   <section id="works" class="l-section">
     <div class="l-container">
       <div class="p-section-header">
         <p class="p-section-label">Works</p>
-        <h2 class="p-section-title">制作実績</h2>
+        <h2 class="p-section-title">支援実績</h2>
       </div>
       <div class="p-works__grid">
         <?php
-        // カスタム投稿タイプ "works" がある場合
         $works_query = new WP_Query([
           'post_type'      => 'works',
-          'posts_per_page' => 4,
+          'posts_per_page' => 6,
           'post_status'    => 'publish',
         ]);
 
@@ -167,26 +152,30 @@ get_header();
           endwhile;
           wp_reset_postdata();
         else :
-          // カスタム投稿がない場合のダミー表示
-          $dummy_items = [
-            ['title' => 'ブランドサイト A社', 'cat' => 'UI Design / WordPress', 'bg' => '#c9d6e3'],
-            ['title' => 'EC サイト B社',     'cat' => 'Frontend / Shopify',    'bg' => '#b8c9a3'],
-            ['title' => 'LP C社キャンペーン', 'cat' => 'UI Design / Vite',     'bg' => '#e3c9c9'],
-            ['title' => 'コーポレート D社',   'cat' => 'WordPress / SEO',      'bg' => '#c9c9e3'],
+          $items = [
+            ['title' => '製造業 A社 DX推進',    'cat' => 'DX / 業務効率化',    'bg' => '#d8e4f0'],
+            ['title' => '小売業 B社 在庫管理',   'cat' => 'システム開発',       'bg' => '#d8f0e4'],
+            ['title' => '金融 C社 データ分析基盤','cat' => 'データ分析 / AI',   'bg' => '#f0e4d8'],
+            ['title' => '医療 D社 予約システム',  'cat' => 'システム開発',       'bg' => '#e4d8f0'],
+            ['title' => '物流 E社 配送最適化',    'cat' => 'AI / 最適化',       'bg' => '#f0f0d8'],
+            ['title' => '教育 F社 LMS構築',       'cat' => 'システム開発',       'bg' => '#d8f0f0'],
           ];
-          foreach ($dummy_items as $item) : ?>
-          <div class="p-works__item" style="background-color:<?php echo esc_attr($item['bg']); ?>;">
-            <div class="p-works__item-inner">
-              <p class="p-works__item-title"><?php echo esc_html($item['title']); ?></p>
-              <p class="p-works__item-category"><?php echo esc_html($item['cat']); ?></p>
-            </div>
+          foreach ($items as $item) :
+        ?>
+        <div class="p-works__item" style="background-color:<?php echo esc_attr($item['bg']); ?>;">
+          <div class="p-works__item-inner">
+            <p class="p-works__item-title"><?php echo esc_html($item['title']); ?></p>
+            <p class="p-works__item-category"><?php echo esc_html($item['cat']); ?></p>
           </div>
-          <?php endforeach;
-        endif; ?>
+        </div>
+        <?php
+          endforeach;
+        endif;
+        ?>
       </div>
 
       <div style="text-align:center;margin-top:3rem;">
-        <button type="button" class="c-btn c-btn--outline-dark" data-modal-trigger="works-modal">
+        <button type="button" class="c-btn c-btn--outline-dark" data-modal-trigger="works-detail-modal">
           実績詳細を見る
         </button>
       </div>
@@ -204,20 +193,20 @@ get_header();
       </div>
       <div class="p-faq__list">
         <?php
-        // カスタム投稿タイプ "faq" がある場合はループで出力
         $faq_items = [
-          ['q' => '制作期間はどのくらいかかりますか？',
-           'a' => 'LP の場合は約 2〜4 週間、コーポレートサイトは 1〜2 ヶ月が目安です。詳細はヒアリング後にご提案します。'],
-          ['q' => '制作費用はどれくらいですか？',
-           'a' => 'LP の場合は 20 万円〜、コーポレートサイトは 50 万円〜となります。要件・ページ数・機能によって変動します。'],
-          ['q' => 'WordPress を使わない構成も対応できますか？',
-           'a' => 'はい、Next.js・Astro・静的サイト生成など、プロジェクトに最適な技術スタックをご提案します。'],
-          ['q' => '納品後のサポートはありますか？',
-           'a' => '納品後 1 ヶ月間は無償で不具合対応を行います。その後は月額保守プランをご用意しています。'],
-          ['q' => 'デザインのみの依頼は可能ですか？',
-           'a' => 'はい、Figma によるデザインのみのご依頼も承っております。'],
+          ['q' => 'まずは相談だけでも可能ですか？',
+           'a' => 'もちろん可能です。初回のご相談は無料で承っております。現状の課題をお聞きし、最適なアプローチをご提案します。'],
+          ['q' => '小規模な企業でも依頼できますか？',
+           'a' => 'はい、企業規模は問いません。スタートアップから大企業まで、予算と目的に合わせたプランをご提案します。'],
+          ['q' => '開発期間と費用の目安を教えてください。',
+           'a' => '小規模システムで 1〜3 ヶ月・100 万円〜、大規模 DX 支援で半年〜数年・数千万円〜が目安です。'],
+          ['q' => '導入後のサポート体制はどうなっていますか？',
+           'a' => '専任の CS チームが対応します。電話・メール・チャットによるサポートを平日 9〜18 時に提供しています。'],
+          ['q' => '既存のシステムとの連携は可能ですか？',
+           'a' => 'はい、API 連携・データ移行・レガシーシステムとの統合など、既存環境に合わせた柔軟な対応が可能です。'],
         ];
-        foreach ($faq_items as $item) : ?>
+        foreach ($faq_items as $item) :
+        ?>
         <details class="c-accordion">
           <summary class="c-accordion__summary">
             <?php echo esc_html($item['q']); ?>
@@ -243,8 +232,8 @@ get_header();
       </div>
       <div class="p-contact__inner">
         <p class="p-contact__desc">
-          お見積もり・ご相談はこちらからどうぞ。<br>
-          通常 1〜2 営業日以内にご返信します。
+          ご相談・資料請求・お見積もりはこちらからお気軽にどうぞ。<br>
+          担当者より 1〜2 営業日以内にご連絡します。
         </p>
 
         <form id="js-contact-form" class="c-form"
@@ -323,30 +312,53 @@ get_header();
 </main>
 
 <!-- ========================================
-     モーダル：実績詳細
+     モーダル：会社詳細
 ======================================== -->
-<div id="works-modal" class="c-modal" role="dialog" aria-modal="true"
-     aria-labelledby="works-modal-title" hidden>
+<div id="about-modal" class="c-modal" role="dialog" aria-modal="true"
+     aria-labelledby="about-modal-title" hidden>
   <div class="c-modal__overlay"></div>
   <div class="c-modal__inner">
     <div class="c-modal__header">
-      <h2 class="c-modal__title" id="works-modal-title">制作実績 — A社ブランドサイト</h2>
+      <h2 class="c-modal__title" id="about-modal-title">アクセス</h2>
       <button type="button" class="c-modal__close" data-modal-close aria-label="閉じる">
         <i class="fas fa-xmark" aria-hidden="true"></i>
       </button>
     </div>
     <div class="c-modal__content">
-      <p><strong>クライアント：</strong>A社（食品メーカー）</p>
-      <p><strong>制作期間：</strong>2024年 8月〜10月（3ヶ月）</p>
-      <p><strong>使用技術：</strong>Vite / TypeScript / WordPress / GSAP</p>
+      <div style="aspect-ratio:16/9;background:#e8eef5;border-radius:8px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;color:#888;">
+        地図エリア（Google Maps 等を埋め込み）
+      </div>
+      <p><strong>〒100-0001</strong><br>東京都千代田区千代田1-1-1 〇〇ビル 10F</p>
       <p style="margin-top:1rem;">
-        ブランドリニューアルに合わせた新コーポレートサイト。GSAP を活用したスクロールアニメーションと、
-        Fluid Typography で全デバイスに最適な体験を実現しました。
+        <strong>電話：</strong>03-1234-5678（平日 9:00〜18:00）<br>
+        <strong>最寄り駅：</strong>東京駅 徒歩 5分
       </p>
     </div>
     <div class="c-modal__footer">
       <button type="button" class="c-btn c-btn--outline-dark" data-modal-close>閉じる</button>
-      <a href="#contact" class="c-btn c-btn--primary" data-modal-close>お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<!-- モーダル：実績詳細 -->
+<div id="works-detail-modal" class="c-modal" role="dialog" aria-modal="true"
+     aria-labelledby="works-detail-modal-title" hidden>
+  <div class="c-modal__overlay"></div>
+  <div class="c-modal__inner">
+    <div class="c-modal__header">
+      <h2 class="c-modal__title" id="works-detail-modal-title">実績詳細 — 製造業 A社</h2>
+      <button type="button" class="c-modal__close" data-modal-close aria-label="閉じる">
+        <i class="fas fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="c-modal__content">
+      <p><strong>課題：</strong>手作業による受発注処理で月 200 時間の工数が発生</p>
+      <p><strong>解決策：</strong>受発注システムの自動化と在庫連携 API の構築</p>
+      <p><strong>結果：</strong>月間工数 80% 削減・ヒューマンエラーゼロを実現</p>
+    </div>
+    <div class="c-modal__footer">
+      <button type="button" class="c-btn c-btn--outline-dark" data-modal-close>閉じる</button>
+      <a href="#contact" class="c-btn c-btn--primary" data-modal-close>相談する</a>
     </div>
   </div>
 </div>
