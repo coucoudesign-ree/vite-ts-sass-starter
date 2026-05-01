@@ -1,0 +1,247 @@
+// ==============================================
+// COMPONENTS / _form.scss
+// ----------------------------------------------
+// 汎用コンタクトフォーム（BEM）
+// ==============================================
+
+@use "@scss/settings/functions" as f;
+@use "@scss/settings/variables" as v;
+
+// ローカル定数
+$_error-color: #dc2626;
+$_focus-color: f.color(primary);
+$_border-color: f.color(neutral-300);
+$_border-radius: f.radius(sm);
+
+// ==============================================
+// ブロック
+// ==============================================
+.c-form {
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+// ==============================================
+// グループ（ラベル＋入力＋エラー）
+// ==============================================
+.c-form__group {
+  margin-bottom: f.space(lg);
+}
+
+// 横並びレイアウト（郵便番号＋住所など）
+.c-form__row {
+  display: grid;
+  gap: f.space(md);
+
+  @include respond(md) {
+    grid-template-columns: 200px 1fr;
+    align-items: start;
+  }
+}
+
+// ==============================================
+// ラベル
+// ==============================================
+.c-form__label {
+  display: flex;
+  align-items: center;
+  gap: f.space(sm);
+  margin-bottom: f.space(xs);
+  font-size: f.font-size(sm);
+  font-weight: 700;
+  color: f.color(neutral-800);
+}
+
+.c-form__required {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  font-size: 0.6875rem; // 11px
+  font-weight: 700;
+  line-height: 1.4;
+  color: #fff;
+  background-color: $_error-color;
+  border-radius: f.radius(xs);
+  white-space: nowrap;
+}
+
+.c-form__optional {
+  font-size: 0.6875rem;
+  font-weight: 400;
+  color: f.color(neutral-500);
+}
+
+// ==============================================
+// 入力フィールド共通
+// ==============================================
+%form-field-base {
+  width: 100%;
+  padding: f.space(sm) f.space(md);
+  font-size: f.font-size(base);
+  line-height: 1.6;
+  color: f.color(neutral-900);
+  background-color: #fff;
+  border: 1px solid $_border-color;
+  border-radius: $_border-radius;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  appearance: none;
+
+  &::placeholder {
+    color: f.color(neutral-400);
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: $_focus-color;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+  }
+
+  &:disabled {
+    background-color: f.color(neutral-100);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+.c-form__input {
+  @extend %form-field-base;
+
+  &--error {
+    border-color: $_error-color;
+
+    &:focus-visible {
+      border-color: $_error-color;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+    }
+  }
+}
+
+.c-form__textarea {
+  @extend %form-field-base;
+  resize: vertical;
+  min-height: 160px;
+
+  &--error {
+    border-color: $_error-color;
+
+    &:focus-visible {
+      border-color: $_error-color;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+    }
+  }
+}
+
+// ==============================================
+// 入力ラッパー（郵便番号のステータス表示用）
+// ==============================================
+.c-form__input-wrap {
+  position: relative;
+}
+
+.c-form__zip-status {
+  display: block;
+  margin-top: f.space(xs);
+  font-size: f.font-size(xs);
+  color: f.color(neutral-500);
+
+  &[data-error="true"] {
+    color: $_error-color;
+  }
+}
+
+// ==============================================
+// インラインエラーメッセージ
+// ==============================================
+.c-form__error {
+  display: block;
+  margin-top: f.space(xs);
+  font-size: f.font-size(xs);
+  color: $_error-color;
+  line-height: 1.5;
+
+  &:empty,
+  &[hidden] {
+    display: none;
+  }
+}
+
+// ==============================================
+// ヒントテキスト
+// ==============================================
+.c-form__hint {
+  display: block;
+  margin-top: f.space(xs);
+  font-size: f.font-size(xs);
+  color: f.color(neutral-500);
+  line-height: 1.5;
+}
+
+// ==============================================
+// グローバルエラー（送信失敗メッセージ）
+// ==============================================
+.c-form__alert {
+  padding: f.space(md) f.space(lg);
+  margin-bottom: f.space(lg);
+  font-size: f.font-size(sm);
+  color: $_error-color;
+  background-color: rgba(220, 38, 38, 0.06);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: $_border-radius;
+  line-height: 1.6;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+// ==============================================
+// 送信ボタン
+// ==============================================
+.c-form__submit {
+  display: block;
+  width: 100%;
+  padding: f.space(md) f.space(xl);
+  font-size: f.font-size(lg);
+  font-weight: 700;
+  color: #fff;
+  background-color: f.color(primary);
+  border-radius: f.radius(full);
+  cursor: pointer;
+  transition: background-color 0.25s ease, opacity 0.25s ease, transform 0.15s ease;
+
+  @include respond(md) {
+    width: auto;
+    min-width: 240px;
+    margin-inline: auto;
+  }
+
+  &:hover:not([disabled]) {
+    background-color: color-mix(in srgb, f.color(primary) 85%, #000);
+    opacity: 1; // _base.scss のデフォルト hover opacity を上書き
+    transform: translateY(-1px);
+  }
+
+  &[disabled],
+  &--loading {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// ==============================================
+// ハニーポット（視覚的に完全非表示）
+// ==============================================
+.c-form__honeypot {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+  pointer-events: none;
+}

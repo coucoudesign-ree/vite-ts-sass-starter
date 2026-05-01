@@ -1,9 +1,7 @@
-import { defineConfig, loadEnv } from "vite";
+import { defineConfig } from "vite";
 import path from "path";
 
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), "");
-
+export default defineConfig(() => {
   // WPテーマでは、ビルド後のファイルをテーマ内の 'dist' フォルダに集約するのが一般的です
   const outDir = "dist";
 
