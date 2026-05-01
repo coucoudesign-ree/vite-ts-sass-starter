@@ -533,6 +533,13 @@ body.is-fixed {
   color: f.color(neutral-300);
 }
 
+.p-works__item-trigger {
+  margin-top: f.space(sm);
+  align-self: flex-start;
+  font-size: f.font-size(xs);
+  padding: 0.4em 1em;
+}
+
 // ==============================================
 // FAQ
 // ==============================================
