@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>企業情報 | Vite Corp</title>
+    <meta name="description" content="Vite Corp コーポレートサイト — 最先端のソリューションでビジネスを加速します。" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="stylesheet" href="/src/scss/style.scss" />
+  </head>
+
+  <body>
+
+    <!-- ========================================
+         ヘッダー
+    ======================================== -->
+    <header class="l-header">
+      <div class="l-header__inner">
+        <a href="/src/corporate.html" class="l-header__logo">VITE CORP</a>
+
+        <button id="js-hamburger" class="l-header__hamburger" type="button"
+                aria-expanded="false" aria-controls="js-nav" aria-label="メニューを開く">
+          <span class="l-header__hamburger-line"></span>
+          <span class="l-header__hamburger-line"></span>
+          <span class="l-header__hamburger-line"></span>
+        </button>
+
+        <nav id="js-nav" class="l-header__nav" aria-hidden="true" aria-label="グローバルナビゲーション">
+          <ul class="l-header__nav-list">
+            <li><a href="#about">会社概要</a></li>
+            <li><a href="#service">事業内容</a></li>
+            <li><a href="#works">実績</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact" class="l-header__nav-cta">お問い合わせ</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div id="js-drawerOverlay" class="l-header__overlay"></div>
+    </header>
+
+    <main>
+
+      <!-- ========================================
+           Hero
+      ======================================== -->
+      <section id="hero" class="p-hero p-hero--light">
+        <div class="l-container p-hero__inner">
+          <p class="p-hero__label">Leading Digital Innovation</p>
+          <h1 class="p-hero__title" style="color:#171717;">
+            テクノロジーで、<br>
+            ビジネスを次のステージへ。
+          </h1>
+          <p class="p-hero__lead" style="color:#525252;">
+            Vite Corp は、DX 推進・システム開発・データ分析を通じて<br>
+            企業の持続的成長をテクノロジーで支援します。
+          </p>
+          <div class="p-hero__actions">
+            <a href="#contact" class="c-btn c-btn--primary">お問い合わせ</a>
+            <a href="#about" class="c-btn c-btn--outline-dark">会社概要を見る</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+           About（会社概要）
+      ======================================== -->
+      <section id="about" class="l-section">
+        <div class="l-container">
+          <div class="p-section-header">
+            <p class="p-section-label">About</p>
+            <h2 class="p-section-title">会社概要</h2>
+          </div>
+
+          <div style="max-width:800px;margin-inline:auto;">
+            <table class="p-about__table">
+              <tbody>
+                <tr>
+                  <th scope="row">社名</th>
+                  <td>株式会社 Vite Corp</td>
+                </tr>
+                <tr>
+                  <th scope="row">設立</th>
+                  <td>2020年 4月</td>
+                </tr>
+                <tr>
+                  <th scope="row">代表取締役</th>
+                  <td>山田 太郎</td>
+                </tr>
+                <tr>
+                  <th scope="row">資本金</th>
+                  <td>1,000万円</td>
+                </tr>
+                <tr>
+                  <th scope="row">従業員数</th>
+                  <td>50名（2025年4月現在）</td>
+                </tr>
+                <tr>
+                  <th scope="row">所在地</th>
+                  <td>〒100-0001 東京都千代田区千代田1-1-1</td>
+                </tr>
+                <tr>
+                  <th scope="row">事業内容</th>
+                  <td>DXコンサルティング、システム開発、データ分析・AI ソリューション</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div style="text-align:center;margin-top:2.5rem;">
+              <button type="button" class="c-btn c-btn--outline-dark" data-modal-trigger="about-modal">
+                会社詳細・アクセスを見る
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+           Service（事業内容）
+      ======================================== -->
+      <section id="service" class="l-section l-section--gray">
+        <div class="l-container">
+          <div class="p-section-header">
+            <p class="p-section-label">Service</p>
+            <h2 class="p-section-title">事業内容</h2>
+            <p class="p-section-desc">お客様のビジネス課題に合わせた最適なソリューションを提供します。</p>
+          </div>
+          <div class="p-service__grid">
+            <article class="p-service__card">
+              <div class="p-service__card-icon" aria-hidden="true">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3 class="p-service__card-title">DX コンサルティング</h3>
+              <p class="p-service__card-text">現状分析から戦略立案・導入支援まで。業務効率化と競争力強化を一貫してサポートします。</p>
+            </article>
+            <article class="p-service__card">
+              <div class="p-service__card-icon" aria-hidden="true">
+                <i class="fas fa-server"></i>
+              </div>
+              <h3 class="p-service__card-title">システム開発</h3>
+              <p class="p-service__card-text">要件定義からリリース・保守まで。スモールスタートで素早く価値を届けるアジャイル開発を推進します。</p>
+            </article>
+            <article class="p-service__card">
+              <div class="p-service__card-icon" aria-hidden="true">
+                <i class="fas fa-brain"></i>
+              </div>
+              <h3 class="p-service__card-title">データ分析 / AI</h3>
+              <p class="p-service__card-text">蓄積されたデータを価値ある知見に変換。機械学習モデルの構築から運用まで対応します。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+           Works（実績）
+      ======================================== -->
+      <section id="works" class="l-section">
+        <div class="l-container">
+          <div class="p-section-header">
+            <p class="p-section-label">Works</p>
+            <h2 class="p-section-title">支援実績</h2>
+          </div>
+          <div class="p-works__grid">
+            <div class="p-works__item" style="background:#d8e4f0;">
+              <div class="p-works__item-inner">
+                <p class="p-works__item-title">製造業 A社 DX推進</p>
+                <p class="p-works__item-category">DX / 業務効率化</p>
+              </div>
+            </div>
+            <div class="p-works__item" style="background:#d8f0e4;">
+              <div class="p-works__item-inner">
+                <p class="p-works__item-title">小売業 B社 在庫管理</p>
+                <p class="p-works__item-category">システム開発</p>
+              </div>
+            </div>
+            <div class="p-works__item" style="background:#f0e4d8;">
+              <div class="p-works__item-inner">
+                <p class="p-works__item-title">金融 C社 データ分析基盤</p>
+                <p class="p-works__item-category">データ分析 / AI</p>
+              </div>
+            </div>
+            <div class="p-works__item" style="background:#e4d8f0;">
+              <div class="p-works__item-inner">
+                <p class="p-works__item-title">医療 D社 予約システム</p>
+                <p class="p-works__item-category">システム開発</p>
+              </div>
+            </div>
+            <div class="p-works__item" style="background:#f0f0d8;">
+              <div class="p-works__item-inner">
+                <p class="p-works__item-title">物流 E社 配送最適化</p>
+                <p class="p-works__item-category">AI / 最適化</p>
+              </div>
+            </div>
+            <div class="p-works__item" style="background:#d8f0f0;">
+              <div class="p-works__item-inner">
+                <p class="p-works__item-title">教育 F社 LMS構築</p>
+                <p class="p-works__item-category">システム開発</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align:center;margin-top:3rem;">
+            <button type="button" class="c-btn c-btn--outline-dark" data-modal-trigger="works-detail-modal">
+              実績詳細を見る
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+           FAQ（アコーディオン）
+      ======================================== -->
+      <section id="faq" class="l-section l-section--gray">
+        <div class="l-container">
+          <div class="p-section-header">
+            <p class="p-section-label">FAQ</p>
+            <h2 class="p-section-title">よくある質問</h2>
+          </div>
+          <div class="p-faq__list">
+
+            <details class="c-accordion">
+              <summary class="c-accordion__summary">
+                まずは相談だけでも可能ですか？
+                <span class="c-accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="c-accordion__body">
+                <div class="c-accordion__content">
+                  もちろん可能です。初回のご相談は無料で承っております。現状の課題をお聞きし、最適なアプローチをご提案します。まずはお気軽にお問い合わせください。
+                </div>
+              </div>
+            </details>
+
+            <details class="c-accordion">
+              <summary class="c-accordion__summary">
+                小規模な企業でも依頼できますか？
+                <span class="c-accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="c-accordion__body">
+                <div class="c-accordion__content">
+                  はい、企業規模は問いません。スタートアップから大企業まで、予算と目的に合わせたプランをご提案します。まずは現状とご要望をお聞かせください。
+                </div>
+              </div>
+            </details>
+
+            <details class="c-accordion">
+              <summary class="c-accordion__summary">
+                開発期間と費用の目安を教えてください。
+                <span class="c-accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="c-accordion__body">
+                <div class="c-accordion__content">
+                  プロジェクトの規模・要件によって異なります。小規模システムで 1〜3 ヶ月・100 万円〜、大規模 DX 支援で半年〜数年・数千万円〜が目安です。詳細はヒアリング後にお見積もりします。
+                </div>
+              </div>
+            </details>
+
+            <details class="c-accordion">
+              <summary class="c-accordion__summary">
+                導入後のサポート体制はどうなっていますか？
+                <span class="c-accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="c-accordion__body">
+                <div class="c-accordion__content">
+                  専任の CS チームが対応します。電話・メール・チャットによるサポートを平日 9〜18 時に提供しています。また、月次レポートと定例ミーティングで進捗を共有します。
+                </div>
+              </div>
+            </details>
+
+            <details class="c-accordion">
+              <summary class="c-accordion__summary">
+                既存のシステムとの連携は可能ですか？
+                <span class="c-accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="c-accordion__body">
+                <div class="c-accordion__content">
+                  はい、API 連携・データ移行・レガシーシステムとの統合など、既存環境に合わせた柔軟な対応が可能です。事前調査のうえ最適な方式をご提案します。
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+           Contact（フォーム）
+      ======================================== -->
+      <section id="contact" class="l-section">
+        <div class="l-container">
+          <div class="p-section-header">
+            <p class="p-section-label">Contact</p>
+            <h2 class="p-section-title">お問い合わせ</h2>
+          </div>
+          <div class="p-contact__inner">
+            <p class="p-contact__desc">
+              ご相談・資料請求・お見積もりはこちらからお気軽にどうぞ。<br>
+              担当者より 1〜2 営業日以内にご連絡します。
+            </p>
+
+            <form id="js-contact-form" class="c-form" action="/api/sendmail.php" method="post" novalidate>
+              <input type="hidden" name="csrf_token" value="">
+
+              <!-- ハニーポット -->
+              <div class="c-form__honeypot" aria-hidden="true">
+                <label for="nickname">名前</label>
+                <input type="text" id="nickname" name="nickname" autocomplete="off" tabindex="-1">
+              </div>
+
+              <!-- お名前 -->
+              <div class="c-form__group">
+                <label for="name" class="c-form__label">
+                  お名前<span class="c-form__required">必須</span>
+                </label>
+                <input type="text" id="name" name="name" class="c-form__input"
+                       placeholder="山田 太郎" autocomplete="name">
+                <span id="name-error" class="c-form__error" role="alert" hidden></span>
+              </div>
+
+              <!-- フリガナ -->
+              <div class="c-form__group">
+                <label for="furigana" class="c-form__label">
+                  フリガナ<span class="c-form__required">必須</span>
+                </label>
+                <input type="text" id="furigana" name="furigana" class="c-form__input"
+                       placeholder="ヤマダ タロウ">
+                <span id="furigana-error" class="c-form__error" role="alert" hidden></span>
+              </div>
+
+              <!-- メールアドレス -->
+              <div class="c-form__group">
+                <label for="email" class="c-form__label">
+                  メールアドレス<span class="c-form__required">必須</span>
+                </label>
+                <input type="email" id="email" name="email" class="c-form__input"
+                       placeholder="example@email.com" autocomplete="email">
+                <span id="email-error" class="c-form__error" role="alert" hidden></span>
+              </div>
+
+              <!-- 電話番号 -->
+              <div class="c-form__group">
+                <label for="tel" class="c-form__label">
+                  電話番号<span class="c-form__required">必須</span>
+                </label>
+                <input type="tel" id="tel" name="tel" class="c-form__input"
+                       placeholder="03-1234-5678" autocomplete="tel">
+                <span id="tel-error" class="c-form__error" role="alert" hidden></span>
+              </div>
+
+              <!-- 郵便番号 + 住所 -->
+              <div class="c-form__group">
+                <label class="c-form__label">
+                  ご住所<span class="c-form__required">必須</span>
+                </label>
+                <div class="c-form__row">
+                  <div class="c-form__input-wrap">
+                    <input type="text" id="postcode" name="postcode" class="c-form__input"
+                           placeholder="123-4567" maxlength="8" autocomplete="postal-code"
+                           aria-label="郵便番号">
+                    <span class="c-form__zip-status" aria-live="polite"></span>
+                    <span id="postcode-error" class="c-form__error" role="alert" hidden></span>
+                  </div>
+                  <div>
+                    <input type="text" id="address" name="address" class="c-form__input"
+                           placeholder="都道府県・市区町村・番地" autocomplete="street-address"
+                           aria-label="住所">
+                    <span id="address-error" class="c-form__error" role="alert" hidden></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 建物名 -->
+              <div class="c-form__group">
+                <label for="address_building" class="c-form__label">
+                  建物名・部屋番号<span class="c-form__optional">任意</span>
+                </label>
+                <input type="text" id="address_building" name="address_building" class="c-form__input"
+                       placeholder="〇〇ビル 3F">
+              </div>
+
+              <!-- お問い合わせ内容 -->
+              <div class="c-form__group">
+                <label for="message" class="c-form__label">
+                  お問い合わせ内容<span class="c-form__required">必須</span>
+                </label>
+                <textarea id="message" name="message" class="c-form__textarea" rows="6"
+                          placeholder="ご相談内容をご記入ください"></textarea>
+                <span id="message-error" class="c-form__error" role="alert" hidden></span>
+              </div>
+
+              <!-- グローバルエラー -->
+              <div data-form-alert class="c-form__alert" role="alert" hidden></div>
+
+              <!-- 送信ボタン -->
+              <div class="c-form__group">
+                <button type="submit" class="c-form__submit">送信する</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ========================================
+         フッター
+    ======================================== -->
+    <footer class="l-footer">
+      <div class="l-footer__inner">
+        <div class="l-footer__top">
+          <div>
+            <a href="/src/corporate.html" class="l-footer__logo">VITE CORP</a>
+            <p class="l-footer__desc">テクノロジーで企業の持続的成長を支援します。</p>
+          </div>
+          <nav aria-label="フッターナビゲーション">
+            <ul class="l-footer__nav">
+              <li><a href="#about">会社概要</a></li>
+              <li><a href="#service">事業内容</a></li>
+              <li><a href="#works">実績</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+          </nav>
+        </div>
+        <p class="l-footer__copy">&copy; 2025 Vite Corp, Inc. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- ========================================
+         ページトップ
+    ======================================== -->
+    <a href="#" class="js-pagetop" aria-label="ページトップへ戻る">
+      <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </a>
+
+    <!-- ========================================
+         モーダル：会社詳細
+    ======================================== -->
+    <div id="about-modal" class="c-modal" role="dialog" aria-modal="true"
+         aria-labelledby="about-modal-title" hidden>
+      <div class="c-modal__overlay"></div>
+      <div class="c-modal__inner">
+        <div class="c-modal__header">
+          <h2 class="c-modal__title" id="about-modal-title">アクセス</h2>
+          <button type="button" class="c-modal__close" data-modal-close aria-label="閉じる">
+            <i class="fas fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="c-modal__content">
+          <div style="aspect-ratio:16/9;background:#e8eef5;border-radius:8px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;color:#888;">
+            地図エリア（Google Maps 等を埋め込み）
+          </div>
+          <p><strong>〒100-0001</strong><br>東京都千代田区千代田1-1-1 〇〇ビル 10F</p>
+          <p style="margin-top:1rem;">
+            <strong>電話：</strong>03-1234-5678（平日 9:00〜18:00）<br>
+            <strong>最寄り駅：</strong>東京駅 徒歩 5分
+          </p>
+        </div>
+        <div class="c-modal__footer">
+          <button type="button" class="c-btn c-btn--outline-dark" data-modal-close>閉じる</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- モーダル：実績詳細 -->
+    <div id="works-detail-modal" class="c-modal" role="dialog" aria-modal="true"
+         aria-labelledby="works-detail-modal-title" hidden>
+      <div class="c-modal__overlay"></div>
+      <div class="c-modal__inner">
+        <div class="c-modal__header">
+          <h2 class="c-modal__title" id="works-detail-modal-title">実績詳細 — 製造業 A社</h2>
+          <button type="button" class="c-modal__close" data-modal-close aria-label="閉じる">
+            <i class="fas fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="c-modal__content">
+          <p><strong>課題：</strong>手作業による受発注処理で月 200 時間の工数が発生</p>
+          <p><strong>解決策：</strong>受発注システムの自動化と在庫連携 API の構築</p>
+          <p><strong>結果：</strong>月間工数 80% 削減・ヒューマンエラーゼロを実現</p>
+        </div>
+        <div class="c-modal__footer">
+          <button type="button" class="c-btn c-btn--outline-dark" data-modal-close>閉じる</button>
+          <a href="#contact" class="c-btn c-btn--primary" data-modal-close>相談する</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================
+         JS エントリ（Vite dev server）
+    ======================================== -->
+    <script type="module" src="/src/ts/components/index.ts"></script>
+  </body>
+</html>

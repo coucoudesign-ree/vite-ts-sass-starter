@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LP サンプル | Vite Starter</title>
+    <meta name="description" content="Vite + TypeScript + Sass スターターキット LP サンプルページ" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="stylesheet" href="/src/scss/style.scss" />
+  </head>
+
+  <body>
+
+    <!-- ========================================
+         オープニングアニメーション
+    ======================================== -->
+    <div data-opening-animation aria-hidden="true" style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#0f0f1a;">
+      <p data-opening-animation="text" style="position:absolute;font-size:clamp(1rem,3vw,1.5rem);font-weight:700;letter-spacing:0.2em;color:#fff;text-transform:uppercase;">
+        Crafting Digital Experience
+      </p>
+      <div data-opening-animation="logo" style="font-size:clamp(2rem,6vw,3.5rem);font-weight:700;color:#fff;letter-spacing:0.1em;">
+        VITE STUDIO
+      </div>
+    </div>
+
+    <!-- ========================================
+         ヘッダー
+    ======================================== -->
+    <header class="l-header">
+      <div class="l-header__inner">
+        <a href="/" class="l-header__logo">VITE STUDIO</a>
+
+        <button id="js-hamburger" class="l-header__hamburger" type="button"
+                aria-expanded="false" aria-controls="js-nav" aria-label="メニューを開く">
+          <span class="l-header__hamburger-line"></span>
+          <span class="l-header__hamburger-line"></span>
+          <span class="l-header__hamburger-line"></span>
+        </button>
+
+        <nav id="js-nav" class="l-header__nav" aria-hidden="true" aria-label="グローバルナビゲーション">
+          <ul class="l-header__nav-list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#works">Works</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact" class="l-header__nav-cta">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div id="js-drawerOverlay" class="l-header__overlay"></div>
+    </header>
+
+    <main>
+
+      <!-- ========================================
+           Hero
+      ======================================== -->
+      <section id="hero" class="p-hero">
+        <div class="l-container p-hero__inner">
+          <p class="p-hero__label">Web Design &amp; Development</p>
+          <h1 class="p-hero__title">
+            あなたのビジョンを、<br>
+            デジタルで体現する。
+          </h1>
+          <p class="p-hero__lead">
+            Vite Studio は、最新のフロントエンド技術で<br>
+            ブランドの世界観を体験価値として届けます。
+          </p>
+          <div class="p-hero__actions">
+            <a href="#contact" class="c-btn c-btn--primary">お問い合わせ</a>
+            <a href="#works" class="c-btn c-btn--outline">実績を見る</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+           About
+      ======================================== -->
+      <section id="about" class="l-section">
+        <div class="l-container">
+          <div class="p-about__grid">
+            <div class="p-about__image">
+              <span>画像エリア（400×300 推奨）</span>
+            </div>
+            <div>
+              <div class="p-section-header" style="text-align:left;">
+                <p class="p-section-label">About Us</p>
+                <h2 class="p-section-title">最高の体験を、<br>すべてのデバイスで。</h2>
+              </div>
+              <div class="p-about__points">
+                <div class="p-about__point">
+                  <div class="p-about__point-icon" aria-hidden="true">
+                    <i class="fas fa-bolt"></i>
+                  </div>
+                  <div>
+                    <p class="p-about__point-title">高速パフォーマンス</p>
+                    <p class="p-about__point-text">Vite + 最適化ビルドで、初回表示を極限まで高速化。コアウェブバイタルを改善します。</p>
+                  </div>
+                </div>
+                <div class="p-about__point">
+                  <div class="p-about__point-icon" aria-hidden="true">
+                    <i class="fas fa-mobile-screen"></i>
+                  </div>
+                  <div>
+                    <p class="p-about__point-title">レスポンシブ設計</p>
+                    <p class="p-about__point-text">Fluid Design で全デバイスに最適なレイアウトを提供。スマートフォンから大型ディスプレイまで対応。</p>
+                  </div>
+                </div>
+                <div class="p-about__point">
+                  <div class="p-about__point-icon" aria-hidden="true">
+                    <i class="fas fa-universal-access"></i>
+                  </div>
+                  <div>
+                    <p class="p-about__point-title">アクセシビリティ対応</p>
+                    <p class="p-about__point-text">WCAG 2.1 基準に準拠したマークアップで、すべてのユーザーに届くサイトを制作します。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+           Service
+      ======================================== -->
+      <section id="service" class="l-section l-section--dark">
+        <div class="l-container">
+          <div class="p-section-header">
+            <p class="p-section-label">Service</p>
+            <h2 class="p-section-title">提供サービス</h2>
+            <p class="p-section-desc">デザインから実装・運用まで、ワンストップでサポートします。</p>
+          </div>
+          <div class="p-service__grid">
+            <article class="p-service__card">
+              <div class="p-service__card-icon" aria-hidden="true">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <h3 class="p-service__card-title">UI / UX デザイン</h3>
+              <p class="p-service__card-text">ユーザー調査から情報設計、プロトタイプ制作まで。コンバージョンを最大化するデザインを提供します。</p>
+            </article>
+            <article class="p-service__card">
+              <div class="p-service__card-icon" aria-hidden="true">
+                <i class="fas fa-code"></i>
+              </div>
+              <h3 class="p-service__card-title">フロントエンド開発</h3>
+              <p class="p-service__card-text">Vite + TypeScript + Sass の最新スタックで、保守性の高いコードベースを構築します。</p>
+            </article>
+            <article class="p-service__card">
+              <div class="p-service__card-icon" aria-hidden="true">
+                <i class="fas fa-wordpress"></i>
+              </div>
+              <h3 class="p-service__card-title">WordPress 開発</h3>
+              <p class="p-service__card-text">カスタムテーマ・プラグイン開発から保守運用まで。編集しやすい CMS 環境を構築します。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+           Works
+      ======================================== -->
+      <section id="works" class="l-section">
+        <div class="l-container">
+          <div class="p-section-header">
+            <p class="p-section-label">Works</p>
+            <h2 class="p-section-title">制作実績</h2>
+          </div>
+          <div class="p-works__grid">
+            <div class="p-works__item" style="background-color:#c9d6e3;">
+              <div class="p-works__item-inner">
+                <p class="p-works__item-title">ブランドサイト A社</p>
+                <p class="p-works__item-category">UI Design / WordPress</p>
+              </div>
+            </div>
+            <div class="p-works__item" style="background-color:#b8c9a3;">
+              <div class="p-works__item-inner">
+                <p class="p-works__item-title">EC サイト B社</p>
+                <p class="p-works__item-category">Frontend / Shopify</p>
+              </div>
+            </div>
+            <div class="p-works__item" style="background-color:#e3c9c9;">
+              <div class="p-works__item-inner">
+                <p class="p-works__item-title">LP C社キャンペーン</p>
+                <p class="p-works__item-category">UI Design / Vite</p>
+              </div>
+            </div>
+            <div class="p-works__item" style="background-color:#c9c9e3;">
+              <div class="p-works__item-inner">
+                <p class="p-works__item-title">コーポレート D社</p>
+                <p class="p-works__item-category">WordPress / SEO</p>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:3rem;">
+            <!-- モーダルトリガー：実績詳細を表示 -->
+            <button type="button" class="c-btn c-btn--outline-dark" data-modal-trigger="works-modal">
+              実績詳細を見る
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+           FAQ（アコーディオン）
+      ======================================== -->
+      <section id="faq" class="l-section l-section--gray">
+        <div class="l-container">
+          <div class="p-section-header">
+            <p class="p-section-label">FAQ</p>
+            <h2 class="p-section-title">よくある質問</h2>
+          </div>
+          <div class="p-faq__list">
+
+            <details class="c-accordion">
+              <summary class="c-accordion__summary">
+                制作期間はどのくらいかかりますか？
+                <span class="c-accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="c-accordion__body">
+                <div class="c-accordion__content">
+                  規模によって異なりますが、LP の場合は約 2〜4 週間、コーポレートサイトは 1〜2 ヶ月が目安です。詳細はヒアリング後にご提案します。
+                </div>
+              </div>
+            </details>
+
+            <details class="c-accordion">
+              <summary class="c-accordion__summary">
+                制作費用はどれくらいですか？
+                <span class="c-accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="c-accordion__body">
+                <div class="c-accordion__content">
+                  LP の場合は 20 万円〜、コーポレートサイトは 50 万円〜となります。要件・ページ数・機能によって変動しますので、お見積もりをご依頼ください。
+                </div>
+              </div>
+            </details>
+
+            <details class="c-accordion">
+              <summary class="c-accordion__summary">
+                WordPress を使わない構成も対応できますか？
+                <span class="c-accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="c-accordion__body">
+                <div class="c-accordion__content">
+                  はい、Next.js・Astro・静的サイト生成など、プロジェクトに最適な技術スタックをご提案します。
+                </div>
+              </div>
+            </details>
+
+            <details class="c-accordion">
+              <summary class="c-accordion__summary">
+                納品後のサポートはありますか？
+                <span class="c-accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="c-accordion__body">
+                <div class="c-accordion__content">
+                  納品後 1 ヶ月間は無償で不具合対応を行います。その後は月額保守プランをご用意しています。
+                </div>
+              </div>
+            </details>
+
+            <details class="c-accordion">
+              <summary class="c-accordion__summary">
+                デザインのみの依頼は可能ですか？
+                <span class="c-accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="c-accordion__body">
+                <div class="c-accordion__content">
+                  はい、Figma によるデザインのみのご依頼も承っております。デザインデータの納品・コーディング仕様書の作成も可能です。
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+           Contact（フォーム）
+      ======================================== -->
+      <section id="contact" class="l-section">
+        <div class="l-container">
+          <div class="p-section-header">
+            <p class="p-section-label">Contact</p>
+            <h2 class="p-section-title">お問い合わせ</h2>
+          </div>
+          <div class="p-contact__inner">
+            <p class="p-contact__desc">
+              お見積もり・ご相談・ご質問はこちらからどうぞ。<br>
+              通常 1〜2 営業日以内にご返信します。
+            </p>
+
+            <form id="js-contact-form" class="c-form" action="/api/sendmail.php" method="post" novalidate>
+              <input type="hidden" name="csrf_token" value="">
+
+              <!-- ハニーポット -->
+              <div class="c-form__honeypot" aria-hidden="true">
+                <label for="nickname">名前</label>
+                <input type="text" id="nickname" name="nickname" autocomplete="off" tabindex="-1">
+              </div>
+
+              <!-- お名前 -->
+              <div class="c-form__group">
+                <label for="name" class="c-form__label">
+                  お名前<span class="c-form__required">必須</span>
+                </label>
+                <input type="text" id="name" name="name" class="c-form__input"
+                       placeholder="山田 太郎" autocomplete="name">
+                <span id="name-error" class="c-form__error" role="alert" hidden></span>
+              </div>
+
+              <!-- フリガナ -->
+              <div class="c-form__group">
+                <label for="furigana" class="c-form__label">
+                  フリガナ<span class="c-form__required">必須</span>
+                </label>
+                <input type="text" id="furigana" name="furigana" class="c-form__input"
+                       placeholder="ヤマダ タロウ">
+                <span id="furigana-error" class="c-form__error" role="alert" hidden></span>
+              </div>
+
+              <!-- メールアドレス -->
+              <div class="c-form__group">
+                <label for="email" class="c-form__label">
+                  メールアドレス<span class="c-form__required">必須</span>
+                </label>
+                <input type="email" id="email" name="email" class="c-form__input"
+                       placeholder="example@email.com" autocomplete="email">
+                <span id="email-error" class="c-form__error" role="alert" hidden></span>
+              </div>
+
+              <!-- 電話番号 -->
+              <div class="c-form__group">
+                <label for="tel" class="c-form__label">
+                  電話番号<span class="c-form__required">必須</span>
+                </label>
+                <input type="tel" id="tel" name="tel" class="c-form__input"
+                       placeholder="03-1234-5678" autocomplete="tel">
+                <span id="tel-error" class="c-form__error" role="alert" hidden></span>
+              </div>
+
+              <!-- 郵便番号 ＋ 住所 -->
+              <div class="c-form__group">
+                <label class="c-form__label">
+                  ご住所<span class="c-form__required">必須</span>
+                </label>
+                <div class="c-form__row">
+                  <div class="c-form__input-wrap">
+                    <input type="text" id="postcode" name="postcode" class="c-form__input"
+                           placeholder="123-4567" maxlength="8" autocomplete="postal-code"
+                           aria-label="郵便番号">
+                    <span class="c-form__zip-status" aria-live="polite"></span>
+                    <span id="postcode-error" class="c-form__error" role="alert" hidden></span>
+                  </div>
+                  <div>
+                    <input type="text" id="address" name="address" class="c-form__input"
+                           placeholder="都道府県・市区町村・番地" autocomplete="street-address"
+                           aria-label="住所">
+                    <span id="address-error" class="c-form__error" role="alert" hidden></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 建物名 -->
+              <div class="c-form__group">
+                <label for="address_building" class="c-form__label">
+                  建物名・部屋番号<span class="c-form__optional">任意</span>
+                </label>
+                <input type="text" id="address_building" name="address_building" class="c-form__input"
+                       placeholder="〇〇ビル 3F">
+              </div>
+
+              <!-- お問い合わせ内容 -->
+              <div class="c-form__group">
+                <label for="message" class="c-form__label">
+                  お問い合わせ内容<span class="c-form__required">必須</span>
+                </label>
+                <textarea id="message" name="message" class="c-form__textarea" rows="6"
+                          placeholder="ご相談内容をご記入ください"></textarea>
+                <span id="message-error" class="c-form__error" role="alert" hidden></span>
+              </div>
+
+              <!-- グローバルエラー -->
+              <div data-form-alert class="c-form__alert" role="alert" hidden></div>
+
+              <!-- 送信ボタン -->
+              <div class="c-form__group">
+                <button type="submit" class="c-form__submit">送信する</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ========================================
+         フッター
+    ======================================== -->
+    <footer class="l-footer">
+      <div class="l-footer__inner">
+        <div class="l-footer__top">
+          <div>
+            <a href="/" class="l-footer__logo">VITE STUDIO</a>
+            <p class="l-footer__desc">最新のフロントエンド技術で、ブランドの世界観を体験価値として届けます。</p>
+          </div>
+          <nav aria-label="フッターナビゲーション">
+            <ul class="l-footer__nav">
+              <li><a href="#about">About</a></li>
+              <li><a href="#service">Service</a></li>
+              <li><a href="#works">Works</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+        <p class="l-footer__copy">&copy; 2025 Vite Studio. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- ========================================
+         ページトップ
+    ======================================== -->
+    <a href="#" class="js-pagetop" aria-label="ページトップへ戻る">
+      <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </a>
+
+    <!-- ========================================
+         モーダル：実績詳細
+    ======================================== -->
+    <div id="works-modal" class="c-modal" role="dialog" aria-modal="true"
+         aria-labelledby="works-modal-title" hidden>
+      <div class="c-modal__overlay"></div>
+      <div class="c-modal__inner">
+        <div class="c-modal__header">
+          <h2 class="c-modal__title" id="works-modal-title">制作実績 — A社ブランドサイト</h2>
+          <button type="button" class="c-modal__close" data-modal-close aria-label="閉じる">
+            <i class="fas fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="c-modal__content">
+          <div style="aspect-ratio:16/9;background:#c9d6e3;border-radius:8px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;color:#888;">
+            プロジェクト画像
+          </div>
+          <p><strong>クライアント：</strong>A社（食品メーカー）</p>
+          <p><strong>制作期間：</strong>2024年 8月〜10月（3ヶ月）</p>
+          <p><strong>使用技術：</strong>Vite / TypeScript / WordPress / GSAP</p>
+          <p style="margin-top:1rem;">
+            ブランドリニューアルに合わせた新コーポレートサイト。GSAP を活用したスクロールアニメーションと、
+            Fluid Typography で全デバイスに最適な体験を実現しました。
+          </p>
+        </div>
+        <div class="c-modal__footer">
+          <button type="button" class="c-btn c-btn--outline-dark" data-modal-close>閉じる</button>
+          <a href="#contact" class="c-btn c-btn--primary" data-modal-close>お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================
+         JS エントリ（Vite dev server）
+    ======================================== -->
+    <script type="module" src="/src/ts/components/index.ts"></script>
+  </body>
+</html>
