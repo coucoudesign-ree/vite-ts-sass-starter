@@ -12,6 +12,8 @@
     "lint:fix": "eslint src --fix",
     "format": "prettier --write \"src/**/*.{ts,scss}\"",
     "build": "vite build",
+    "build:static": "vite build --config vite.config.static.ts",
+    "dev:static": "vite --config vite.config.static.ts",
     "build:dev": "vite build --mode dev",
     "build:deliver": "vite build --mode deliver",
     "package": "npm run build:deliver && node build/build-package.js",

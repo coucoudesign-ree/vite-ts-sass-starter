@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build:static",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
+    { "src": "/corporate", "dest": "/corporate.html" },
+    { "src": "/(.*\\.html)", "dest": "/$1" },
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
