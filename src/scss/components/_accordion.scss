@@ -1,0 +1,114 @@
+// ==============================================
+// COMPONENTS / _accordion.scss
+// ----------------------------------------------
+// details/summary ネイティブ + GSAP アニメーション
+// ==============================================
+
+@use "@scss/settings/functions" as f;
+@use "@scss/settings/mixins" as m;
+
+// ==============================================
+// ブロック
+// ==============================================
+.c-accordion {
+  border-top: 1px solid f.color(neutral-200);
+
+  &:last-of-type {
+    border-bottom: 1px solid f.color(neutral-200);
+  }
+
+  // ネイティブのマーカーを非表示
+  & > summary {
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+}
+
+// ==============================================
+// サマリー（クリック領域）
+// ==============================================
+.c-accordion__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: f.space(md);
+  padding: f.space(lg) 0;
+  font-size: f.font-size(base);
+  font-weight: 700;
+  color: f.color(neutral-800);
+  cursor: pointer;
+  user-select: none;
+
+  &:focus-visible {
+    outline: 2px solid f.color(primary);
+    outline-offset: 2px;
+    border-radius: f.radius(xs);
+  }
+
+  @include m.respond(md) {
+    font-size: f.font-size(lg);
+  }
+}
+
+// ==============================================
+// アイコン（＋ / ×）
+// ==============================================
+.c-accordion__icon {
+  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  color: f.color(primary);
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 50% 0 auto;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  // 横線（常時）
+  &::before {
+    transform: translateY(-50%);
+  }
+
+  // 縦線（open 時に回転して横線と重なる）
+  &::after {
+    transform: translateY(-50%) rotate(90deg);
+  }
+}
+
+// open 時はアイコンを × 形に
+details.c-accordion[open] .c-accordion__icon {
+  &::before {
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translateY(-50%) rotate(-45deg);
+  }
+}
+
+// ==============================================
+// ボディ（GSAP が height を制御）
+// ==============================================
+.c-accordion__body {
+  overflow: hidden;
+}
+
+// ==============================================
+// コンテンツ
+// ==============================================
+.c-accordion__content {
+  padding-bottom: f.space(lg);
+  font-size: f.font-size(base);
+  color: f.color(neutral-700);
+  line-height: 1.8;
+}

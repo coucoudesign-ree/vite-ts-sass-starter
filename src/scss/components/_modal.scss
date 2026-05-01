@@ -1,0 +1,118 @@
+// ==============================================
+// COMPONENTS / _modal.scss
+// ----------------------------------------------
+// 汎用モーダルダイアログ（BEM）
+// data-modal-trigger="id" で呼び出す
+// ==============================================
+
+@use "@scss/settings/functions" as f;
+@use "@scss/settings/mixins" as m;
+
+// ==============================================
+// ラッパー（fixed全面）
+// ==============================================
+.c-modal {
+  position: fixed;
+  inset: 0;
+  z-index: f.z(modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: f.space(md);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+// ==============================================
+// オーバーレイ（背景暗幕）
+// ==============================================
+.c-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgb(0 0 0 / 60%);
+  cursor: pointer;
+}
+
+// ==============================================
+// インナー（コンテンツ領域）
+// ==============================================
+.c-modal__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 640px;
+  max-height: 90dvh;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: f.radius(lg);
+  padding: f.space(xl);
+  box-shadow: 0 20px 60px rgb(0 0 0 / 20%);
+
+  @include m.respond(md) {
+    padding: f.space(xxl);
+  }
+}
+
+// ==============================================
+// ヘッダー（タイトル＋閉じるボタン）
+// ==============================================
+.c-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: f.space(md);
+  margin-bottom: f.space(lg);
+}
+
+.c-modal__title {
+  font-size: f.font-size(lg);
+  font-weight: 700;
+  color: f.color(neutral-900);
+  line-height: 1.4;
+}
+
+// ==============================================
+// 閉じるボタン
+// ==============================================
+.c-modal__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: f.color(neutral-500);
+  border-radius: f.radius(full);
+  flex-shrink: 0;
+  transition: color 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    color: f.color(neutral-900);
+    background-color: f.color(neutral-100);
+  }
+
+  &:focus-visible {
+    outline: 2px solid f.color(primary);
+    outline-offset: 2px;
+  }
+}
+
+// ==============================================
+// コンテンツ
+// ==============================================
+.c-modal__content {
+  color: f.color(neutral-700);
+  line-height: 1.8;
+}
+
+// ==============================================
+// フッター（ボタン列）
+// ==============================================
+.c-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: f.space(sm);
+  margin-top: f.space(xl);
+  flex-wrap: wrap;
+}

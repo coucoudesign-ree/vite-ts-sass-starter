@@ -33,6 +33,7 @@ function validate(form: HTMLFormElement): ValidationErrors {
   const furigana = get("furigana");
   if (!furigana) {
     errors.furigana = "フリガナを入力してください。";
+  // eslint-disable-next-line no-irregular-whitespace
   } else if (!/^[ァ-ヶー\s　]+$/.test(furigana)) {
     errors.furigana = "フリガナはカタカナで入力してください。";
   }

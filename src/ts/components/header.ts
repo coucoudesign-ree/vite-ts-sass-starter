@@ -74,7 +74,11 @@ export function initHeader(): void {
   };
 
   const toggleDrawer = () => {
-    isOpen() ? closeDrawer() : openDrawer();
+    if (isOpen()) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
   };
 
   if (mq.matches) {
