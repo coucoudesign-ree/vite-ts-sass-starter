@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import path from "path";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // Static HTML build config for Vercel / standalone deployment.
 // WordPress build uses vite.config.ts instead.
@@ -38,5 +39,14 @@ export default defineConfig({
     },
   },
 
-  plugins: [],
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: path.resolve(__dirname, "node_modules/@fortawesome/fontawesome-free/webfonts") + "/*",
+          dest: "webfonts",
+        },
+      ],
+    }),
+  ],
 });

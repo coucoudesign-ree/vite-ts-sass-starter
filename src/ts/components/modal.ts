@@ -127,6 +127,16 @@ export function initModal(): void {
 
     trigger.addEventListener('click', () => openModal(modal, trigger));
 
+    // div[role="button"] などボタン以外のトリガーにキーボード対応
+    if (trigger.tagName !== 'BUTTON') {
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(modal, trigger);
+        }
+      });
+    }
+
     // 閉じるボタン
     modal.querySelectorAll<HTMLElement>('[data-modal-close]').forEach((closeBtn) => {
       closeBtn.addEventListener('click', closeModal);

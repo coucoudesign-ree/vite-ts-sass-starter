@@ -43,22 +43,32 @@ export function initSmoothScroll(): void {
 
       const offsetY = mq.matches ? HEADER_OFFSET_PC : HEADER_OFFSET_SP;
 
-      if (!mq.matches && drawerBtn?.classList.contains("is-active")) {
-        closeDrawer();
+      // モーダル閉鎖アニメーション（~400ms）完了を待ってからスクロール
+      const modalDelay = document.body.classList.contains("is-fixed") ? 450 : 0;
 
-        setTimeout(() => {
+      const doScroll = () => {
+        if (!mq.matches && drawerBtn?.classList.contains("is-active")) {
+          closeDrawer();
+          setTimeout(() => {
+            gsap.to(window, {
+              duration: 1.1,
+              ease: "power2.inOut",
+              scrollTo: { y: target, offsetY },
+            });
+          }, 350);
+        } else {
           gsap.to(window, {
             duration: 1.1,
             ease: "power2.inOut",
             scrollTo: { y: target, offsetY },
           });
-        }, 350);
+        }
+      };
+
+      if (modalDelay > 0) {
+        setTimeout(doScroll, modalDelay);
       } else {
-        gsap.to(window, {
-          duration: 1.1,
-          ease: "power2.inOut",
-          scrollTo: { y: target, offsetY },
-        });
+        doScroll();
       }
     });
   });
