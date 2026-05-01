@@ -10,7 +10,6 @@ import { initSwiper } from './swiper';
 import { initInstagram } from './instagram';
 import { initModal } from './modal';
 import { initAccordion } from './accordion';
-// Web3Forms 外部サービス版: import { initContactForm } from './form';
 import { initForm } from '../form/form-handler';
 import { initZipLookup } from '../form/zip';
 
