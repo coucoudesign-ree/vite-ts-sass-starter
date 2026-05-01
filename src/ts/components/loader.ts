@@ -2,7 +2,7 @@ import gsap from "gsap";
 
 const STORAGE_KEY = "linnoa:openingAnimationPlayed";
 
-const initOpeningAnimation = () => {
+export function initOpeningAnimation(): void {
   const loading = document.querySelector("[data-opening-animation]");
   const text = document.querySelector('[data-opening-animation="text"]');
   const logo = document.querySelector('[data-opening-animation="logo"]');
@@ -80,6 +80,4 @@ const initOpeningAnimation = () => {
   } else {
     window.addEventListener("load", startAnimation);
   }
-};
-
-initOpeningAnimation();
+}

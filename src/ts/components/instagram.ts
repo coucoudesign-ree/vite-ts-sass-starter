@@ -9,7 +9,7 @@ interface InstagramPost {
 const token = import.meta.env.VITE_INSTAGRAM_TOKEN as string | undefined;
 const userId = import.meta.env.VITE_INSTAGRAM_USER_ID as string | undefined;
 
-async function loadInstagram() {
+export async function initInstagram(): Promise<void> {
   if (!token || !userId) {
     console.warn("Instagram: VITE_INSTAGRAM_TOKEN または VITE_INSTAGRAM_USER_ID が設定されていません");
     return;
@@ -46,4 +46,3 @@ async function loadInstagram() {
   }
 }
 
-loadInstagram();

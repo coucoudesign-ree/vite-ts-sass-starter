@@ -1,7 +1,11 @@
-const form = document.querySelector<HTMLFormElement>('#js-contact-form');
-const submitBtn = document.querySelector<HTMLButtonElement>('#js-submit');
+// Web3Forms 外部サービスを使うシンプル版
+// 自前PHPバックエンド版は src/ts/form/form-handler.ts を使用
+export function initContactForm(): void {
+  const form = document.querySelector<HTMLFormElement>('#js-contact-form');
+  const submitBtn = document.querySelector<HTMLButtonElement>('#js-submit');
 
-if (form && submitBtn) {
+  if (!form || !submitBtn) return;
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -20,7 +24,6 @@ if (form && submitBtn) {
       });
 
       const result = await response.json();
-      console.log('送信結果:', result);
 
       if (result.success) {
         window.location.href = '/thanks.html';
