@@ -171,32 +171,38 @@
               <div class="p-works__item-inner">
                 <p class="p-works__item-title">ブランドサイト A社</p>
                 <p class="p-works__item-category">UI Design / WordPress</p>
+                <button type="button" class="c-btn c-btn--outline-dark p-works__item-trigger" data-modal-trigger="works-modal-1">
+                  詳細を見る
+                </button>
               </div>
             </div>
             <div class="p-works__item" style="background-color:#b8c9a3;">
               <div class="p-works__item-inner">
                 <p class="p-works__item-title">EC サイト B社</p>
                 <p class="p-works__item-category">Frontend / Shopify</p>
+                <button type="button" class="c-btn c-btn--outline-dark p-works__item-trigger" data-modal-trigger="works-modal-2">
+                  詳細を見る
+                </button>
               </div>
             </div>
             <div class="p-works__item" style="background-color:#e3c9c9;">
               <div class="p-works__item-inner">
                 <p class="p-works__item-title">LP C社キャンペーン</p>
                 <p class="p-works__item-category">UI Design / Vite</p>
+                <button type="button" class="c-btn c-btn--outline-dark p-works__item-trigger" data-modal-trigger="works-modal-3">
+                  詳細を見る
+                </button>
               </div>
             </div>
             <div class="p-works__item" style="background-color:#c9c9e3;">
               <div class="p-works__item-inner">
                 <p class="p-works__item-title">コーポレート D社</p>
                 <p class="p-works__item-category">WordPress / SEO</p>
+                <button type="button" class="c-btn c-btn--outline-dark p-works__item-trigger" data-modal-trigger="works-modal-4">
+                  詳細を見る
+                </button>
               </div>
             </div>
-          </div>
-          <div style="text-align:center;margin-top:3rem;">
-            <!-- モーダルトリガー：実績詳細を表示 -->
-            <button type="button" class="c-btn c-btn--outline-dark" data-modal-trigger="works-modal">
-              実績詳細を見る
-            </button>
           </div>
         </div>
       </section>
@@ -427,14 +433,14 @@
     </a>
 
     <!-- ========================================
-         モーダル：実績詳細
+         モーダル：実績詳細（各カードに対応）
     ======================================== -->
-    <div id="works-modal" class="c-modal" role="dialog" aria-modal="true"
-         aria-labelledby="works-modal-title" hidden>
+    <div id="works-modal-1" class="c-modal" role="dialog" aria-modal="true"
+         aria-labelledby="works-modal-1-title" hidden>
       <div class="c-modal__overlay"></div>
       <div class="c-modal__inner">
         <div class="c-modal__header">
-          <h2 class="c-modal__title" id="works-modal-title">制作実績 — A社ブランドサイト</h2>
+          <h2 class="c-modal__title" id="works-modal-1-title">制作実績 — ブランドサイト A社</h2>
           <button type="button" class="c-modal__close" data-modal-close aria-label="閉じる">
             <i class="fas fa-xmark" aria-hidden="true"></i>
           </button>
@@ -449,6 +455,93 @@
           <p style="margin-top:1rem;">
             ブランドリニューアルに合わせた新コーポレートサイト。GSAP を活用したスクロールアニメーションと、
             Fluid Typography で全デバイスに最適な体験を実現しました。
+          </p>
+        </div>
+        <div class="c-modal__footer">
+          <button type="button" class="c-btn c-btn--outline-dark" data-modal-close>閉じる</button>
+          <a href="#contact" class="c-btn c-btn--primary" data-modal-close>お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="works-modal-2" class="c-modal" role="dialog" aria-modal="true"
+         aria-labelledby="works-modal-2-title" hidden>
+      <div class="c-modal__overlay"></div>
+      <div class="c-modal__inner">
+        <div class="c-modal__header">
+          <h2 class="c-modal__title" id="works-modal-2-title">制作実績 — EC サイト B社</h2>
+          <button type="button" class="c-modal__close" data-modal-close aria-label="閉じる">
+            <i class="fas fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="c-modal__content">
+          <div style="aspect-ratio:16/9;background:#b8c9a3;border-radius:8px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;color:#888;">
+            プロジェクト画像
+          </div>
+          <p><strong>クライアント：</strong>B社（アパレル）</p>
+          <p><strong>制作期間：</strong>2024年 4月〜7月（4ヶ月）</p>
+          <p><strong>使用技術：</strong>Shopify / Liquid / CSS / JavaScript</p>
+          <p style="margin-top:1rem;">
+            既存 EC サイトのフルリニューアル。Shopify テーマをゼロからカスタム開発し、
+            コンバージョン率 32% 向上を達成しました。
+          </p>
+        </div>
+        <div class="c-modal__footer">
+          <button type="button" class="c-btn c-btn--outline-dark" data-modal-close>閉じる</button>
+          <a href="#contact" class="c-btn c-btn--primary" data-modal-close>お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="works-modal-3" class="c-modal" role="dialog" aria-modal="true"
+         aria-labelledby="works-modal-3-title" hidden>
+      <div class="c-modal__overlay"></div>
+      <div class="c-modal__inner">
+        <div class="c-modal__header">
+          <h2 class="c-modal__title" id="works-modal-3-title">制作実績 — LP C社キャンペーン</h2>
+          <button type="button" class="c-modal__close" data-modal-close aria-label="閉じる">
+            <i class="fas fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="c-modal__content">
+          <div style="aspect-ratio:16/9;background:#e3c9c9;border-radius:8px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;color:#888;">
+            プロジェクト画像
+          </div>
+          <p><strong>クライアント：</strong>C社（化粧品ブランド）</p>
+          <p><strong>制作期間：</strong>2024年 11月〜12月（2ヶ月）</p>
+          <p><strong>使用技術：</strong>Vite / TypeScript / GSAP / Sass</p>
+          <p style="margin-top:1rem;">
+            季節限定キャンペーン用ランディングページ。GSAP ScrollTrigger を駆使した
+            インタラクティブなアニメーションで高い訴求力を実現しました。
+          </p>
+        </div>
+        <div class="c-modal__footer">
+          <button type="button" class="c-btn c-btn--outline-dark" data-modal-close>閉じる</button>
+          <a href="#contact" class="c-btn c-btn--primary" data-modal-close>お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="works-modal-4" class="c-modal" role="dialog" aria-modal="true"
+         aria-labelledby="works-modal-4-title" hidden>
+      <div class="c-modal__overlay"></div>
+      <div class="c-modal__inner">
+        <div class="c-modal__header">
+          <h2 class="c-modal__title" id="works-modal-4-title">制作実績 — コーポレート D社</h2>
+          <button type="button" class="c-modal__close" data-modal-close aria-label="閉じる">
+            <i class="fas fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="c-modal__content">
+          <div style="aspect-ratio:16/9;background:#c9c9e3;border-radius:8px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;color:#888;">
+            プロジェクト画像
+          </div>
+          <p><strong>クライアント：</strong>D社（IT コンサルティング）</p>
+          <p><strong>制作期間：</strong>2025年 1月〜3月（3ヶ月）</p>
+          <p><strong>使用技術：</strong>WordPress / PHP / GSAP / SEO 対策</p>
+          <p style="margin-top:1rem;">
+            採用強化を目的としたコーポレートサイト。WordPress カスタム投稿による
+            採用情報管理と、Core Web Vitals 最適化を同時に実現しました。
           </p>
         </div>
         <div class="c-modal__footer">
