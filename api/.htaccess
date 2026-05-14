@@ -1,0 +1,12 @@
+# ============================================
+# api/.htaccess（ロリポップサーバー用）
+# --------------------------------------------
+# PHP 環境変数の設定
+# $_ENV['KEY'] で参照されます。
+# ============================================
+
+SetEnv ALLOWED_ORIGIN https://vite-ts-sass-starter.vercel.app
+SetEnv MAIL_TO        r.matsuoka.work+test@gmail.com
+SetEnv MAIL_FROM      no-reply@lolipop-773521249e47a669.ssl-lolipop.jp
+SetEnv SITE_NAME      テストサイト
+SetEnv THANKS_URL     https://vite-ts-sass-starter.vercel.app/thanks

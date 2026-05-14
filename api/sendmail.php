@@ -19,7 +19,7 @@ session_start();
 // ========================================
 header('Content-Type: application/json; charset=UTF-8');
 
-$allowed_origin = $_ENV['ALLOWED_ORIGIN'] ?? $_SERVER['HTTP_ORIGIN'] ?? '';
+$allowed_origin = $_ENV['ALLOWED_ORIGIN'] ?? 'https://vite-ts-sass-starter.vercel.app';
 $allowed_hosts  = array_filter(explode(',', $_ENV['ALLOWED_HOSTS'] ?? 'localhost'));
 $origin_host    = parse_url($allowed_origin, PHP_URL_HOST) ?? '';
 $is_allowed     = empty($allowed_hosts) || in_array($origin_host, $allowed_hosts, true);
