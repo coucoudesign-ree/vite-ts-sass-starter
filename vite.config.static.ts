@@ -7,6 +7,7 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 export default defineConfig({
   root: "src",
   base: "/",
+  envDir: path.resolve(__dirname),
 
   build: {
     outDir: path.resolve(__dirname, "dist"),

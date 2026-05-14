@@ -7,6 +7,8 @@
 
 import type { ApiResponse, FormFieldName, FormHandlerOptions, ValidationErrors } from "./types";
 
+const API_BASE = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
+
 // バリデーション対象フィールド（順番 = エラー時フォーカス優先度）
 const REQUIRED_FIELDS: FormFieldName[] = [
   "name",
@@ -150,7 +152,7 @@ async function fetchCsrfToken(endpoint: string): Promise<string | null> {
 export function initForm(options: FormHandlerOptions = {}): void {
   const {
     formSelector = "#js-contact-form",
-    csrfEndpoint = "/api/csrf-token.php",
+    csrfEndpoint = `${API_BASE}/api/csrf-token.php`,
   } = options;
 
   const form = document.querySelector<HTMLFormElement>(formSelector);
@@ -204,7 +206,7 @@ export function initForm(options: FormHandlerOptions = {}): void {
     if (submitBtn) setSubmitting(submitBtn, true);
 
     try {
-      const action = options.actionOverride ?? form.action;
+      const action = options.actionOverride ?? (API_BASE ? `${API_BASE}/api/sendmail.php` : form.action);
       const res = await fetch(action, {
         method: "POST",
         body: new FormData(form),
