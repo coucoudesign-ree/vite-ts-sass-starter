@@ -5,14 +5,14 @@
 // ========================================
 
 export type FormFieldName =
-  | "name"
-  | "furigana"
-  | "email"
-  | "tel"
-  | "postcode"
-  | "address"
-  | "address_building"
-  | "message";
+  | 'name'
+  | 'furigana'
+  | 'email'
+  | 'tel'
+  | 'postcode'
+  | 'address'
+  | 'address_building'
+  | 'message';
 
 export type ValidationErrors = Partial<Record<FormFieldName, string>>;
 
@@ -20,14 +20,14 @@ export type ValidationErrors = Partial<Record<FormFieldName, string>>;
 // API レスポンス
 // -------------------------------------
 export interface ApiSuccessResponse {
-  status: "success";
+  status: 'success';
   redirect: string;
   message: string;
   token?: string;
 }
 
 export interface ApiErrorResponse {
-  status: "error";
+  status: 'error';
   error: string;
   token?: string;
 }

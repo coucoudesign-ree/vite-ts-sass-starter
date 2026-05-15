@@ -7,9 +7,9 @@
 // 🗓️ 2025-12-19 JST
 // ==============================================
 
-@use "@scss/settings/functions" as f;
-@use "@scss/settings/mixins" as m;
-@use "@scss/settings/variables" as v;
+@use '@scss/settings/functions' as f;
+@use '@scss/settings/mixins' as m;
+@use '@scss/settings/variables' as v;
 
 // ----------------------------------------------
 // 🌐 :root デモ変数出力
@@ -102,7 +102,9 @@ p {
   padding: f.space(lg);
   border-radius: f.radius(md);
   box-shadow: f.shadow(sm);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-4px);
@@ -178,7 +180,9 @@ p {
     padding: f.space(xs);
     font-size: f.font-size(xs);
     opacity: 0.4;
-    transition: opacity 0.3s ease, background-color 0.3s ease;
+    transition:
+      opacity 0.3s ease,
+      background-color 0.3s ease;
 
     &.is-active {
       opacity: 1;

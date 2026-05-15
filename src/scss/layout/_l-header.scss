@@ -2,15 +2,15 @@
 // 🏗️ レイアウト - ヘッダ  ー
 // ----------------------------------------------
 
-@use "@scss/settings/functions" as f;
-@use "@scss/settings/mixins" as m;
+@use '@scss/settings/functions' as f;
+@use '@scss/settings/mixins' as m;
 
 // ----------------------------------------------
 // 🧱 基本構造
 // ----------------------------------------------
 
-.l-header { 
-    background: #333;
-     color: #fff;
-     padding: 20px;
+.l-header {
+  background: #333;
+  color: #fff;
+  padding: 20px;
 }

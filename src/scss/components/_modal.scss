@@ -5,8 +5,8 @@
 // data-modal-trigger="id" で呼び出す
 // ==============================================
 
-@use "@scss/settings/functions" as f;
-@use "@scss/settings/mixins" as m;
+@use '@scss/settings/functions' as f;
+@use '@scss/settings/mixins' as m;
 
 // ==============================================
 // ラッパー（fixed全面）
@@ -85,7 +85,9 @@
   color: f.color(neutral-500);
   border-radius: f.radius(full);
   flex-shrink: 0;
-  transition: color 0.2s ease, background-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
 
   &:hover {
     color: f.color(neutral-900);

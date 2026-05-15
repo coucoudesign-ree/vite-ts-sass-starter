@@ -4,37 +4,37 @@
 // ✅ 現状の目的：確実にビルド成功するベース構成
 // ==============================================
 
-@use "sass:math";
+@use 'sass:math';
 
 // ----------------------------------------------
 // 1️⃣ Settings（Design Tokens / Core System）
 // ----------------------------------------------
-@use "@scss/settings/variables" as *;  // トークン
-@use "@scss/settings/functions" as f;  // 関数
-@use "@scss/settings/mixins" as m;     // Mixin
+@use '@scss/settings/variables' as *; // トークン
+@use '@scss/settings/functions' as f; // 関数
+@use '@scss/settings/mixins' as m; // Mixin
 
 // ----------------------------------------------
 // 🎨 FontAwesome（アイコンフォント）
 // ----------------------------------------------
-@use "@fortawesome/fontawesome-free/scss/fontawesome";
-@use "@fortawesome/fontawesome-free/scss/solid";
-@use "@fortawesome/fontawesome-free/scss/brands";
+@use '@fortawesome/fontawesome-free/scss/fontawesome';
+@use '@fortawesome/fontawesome-free/scss/solid';
+@use '@fortawesome/fontawesome-free/scss/brands';
 
 // ----------------------------------------------
 // 2️⃣ Foundation（土台 / 初期設定）
 // ----------------------------------------------
-@use "@scss/foundation/reset";         // 初期化
-@use "@scss/foundation/base";          // ベーススタイル
-@use "@scss/foundation/typography";    // 見出し・本文・リンク
+@use '@scss/foundation/reset'; // 初期化
+@use '@scss/foundation/base'; // ベーススタイル
+@use '@scss/foundation/typography'; // 見出し・本文・リンク
 
 // ----------------------------------------------
 // 🚧 今後追加予定のモジュール
 // ----------------------------------------------
-@use "@scss/layout/l-index";
-@use "@scss/components/form";
-@use "@scss/components/modal";
-@use "@scss/components/accordion";
+@use '@scss/layout/l-index';
+@use '@scss/components/form';
+@use '@scss/components/modal';
+@use '@scss/components/accordion';
 // @use "@scss/components/c-index";
 // @use "@scss/utilities/u-index";
-@use "@scss/project/p-sample"; // サンプルページ用（本番では不要なものを削除）
-@use "@scss/design-check/design-check";
+@use '@scss/project/p-sample'; // サンプルページ用（本番では不要なものを削除）
+@use '@scss/design-check/design-check';
