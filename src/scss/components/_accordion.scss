@@ -4,8 +4,8 @@
 // details/summary ネイティブ + GSAP アニメーション
 // ==============================================
 
-@use "@scss/settings/functions" as f;
-@use "@scss/settings/mixins" as m;
+@use '@scss/settings/functions' as f;
+@use '@scss/settings/mixins' as m;
 
 // ==============================================
 // ブロック
@@ -71,7 +71,9 @@
     height: 2px;
     background-color: currentColor;
     border-radius: 1px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
   }
 
   // 横線（常時）

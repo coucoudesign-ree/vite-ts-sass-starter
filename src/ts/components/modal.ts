@@ -65,11 +65,10 @@ export function initModal(): void {
 
     lockScroll();
 
-    gsap.timeline().to(overlay, { autoAlpha: 1, duration: 0.25, ease: 'power2.out' }).to(
-      inner,
-      { autoAlpha: 1, scale: 1, y: 0, duration: 0.3, ease: 'power2.out' },
-      '-=0.1'
-    );
+    gsap
+      .timeline()
+      .to(overlay, { autoAlpha: 1, duration: 0.25, ease: 'power2.out' })
+      .to(inner, { autoAlpha: 1, scale: 1, y: 0, duration: 0.3, ease: 'power2.out' }, '-=0.1');
 
     // フォーカスを最初の操作可能要素へ
     requestAnimationFrame(() => {
@@ -94,23 +93,26 @@ export function initModal(): void {
     const inner = modal.querySelector<HTMLElement>('.c-modal__inner');
     const overlay = modal.querySelector<HTMLElement>('.c-modal__overlay');
 
-    gsap.timeline().to(inner, { autoAlpha: 0, scale: 0.95, y: 8, duration: 0.2, ease: 'power2.in' }).to(
-      overlay,
-      {
-        autoAlpha: 0,
-        duration: 0.2,
-        ease: 'power2.in',
-        onComplete: () => {
-          modal.hidden = true;
-          modal.setAttribute('aria-hidden', 'true');
-          unlockScroll();
-          lastFocused?.focus();
-          currentModal = null;
-          lastFocused = null;
+    gsap
+      .timeline()
+      .to(inner, { autoAlpha: 0, scale: 0.95, y: 8, duration: 0.2, ease: 'power2.in' })
+      .to(
+        overlay,
+        {
+          autoAlpha: 0,
+          duration: 0.2,
+          ease: 'power2.in',
+          onComplete: () => {
+            modal.hidden = true;
+            modal.setAttribute('aria-hidden', 'true');
+            unlockScroll();
+            lastFocused?.focus();
+            currentModal = null;
+            lastFocused = null;
+          },
         },
-      },
-      '-=0.05'
-    );
+        '-=0.05'
+      );
 
     if (keydownHandler) {
       document.removeEventListener('keydown', keydownHandler);

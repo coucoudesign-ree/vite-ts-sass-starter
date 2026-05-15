@@ -11,8 +11,7 @@ export function initHeader(): void {
 
   if (!btn || !nav) return;
 
-  const FIRST_FOCUS_SELECTOR =
-    '#js-nav a, #js-nav button, #js-nav [tabindex]:not([tabindex="-1"])';
+  const FIRST_FOCUS_SELECTOR = '#js-nav a, #js-nav button, #js-nav [tabindex]:not([tabindex="-1"])';
 
   let scrollY = 0;
   let resizeTimer: number | null = null;

@@ -6,8 +6,8 @@
 // 本番プロジェクトでは不要なセクションを削除して使用
 // ==============================================
 
-@use "@scss/settings/functions" as f;
-@use "@scss/settings/mixins" as m;
+@use '@scss/settings/functions' as f;
+@use '@scss/settings/mixins' as m;
 
 // ==============================================
 // ヘッダー（スターター共通）
@@ -128,12 +128,20 @@
   height: 2px;
   background-color: f.color(neutral-900);
   border-radius: 1px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 
   .is-active & {
-    &:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    &:nth-child(2) { opacity: 0; }
-    &:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    &:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
   }
 }
 
@@ -321,7 +329,9 @@ body.is-fixed {
   font-weight: 700;
   border-radius: f.radius(full);
   text-decoration: none;
-  transition: opacity 0.2s ease, transform 0.15s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.15s ease;
   cursor: pointer;
   white-space: nowrap;
 
@@ -436,7 +446,9 @@ body.is-fixed {
   background: #fff;
   border: 1px solid f.color(neutral-200);
   border-radius: f.radius(lg);
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
 
   &:hover {
     box-shadow: 0 8px 30px rgb(0 0 0 / 10%);
@@ -468,7 +480,9 @@ body.is-fixed {
   color: f.color(neutral-900);
   margin-bottom: f.space(sm);
 
-  .l-section--dark & { color: #fff; }
+  .l-section--dark & {
+    color: #fff;
+  }
 }
 
 .p-service__card-text {
@@ -476,7 +490,9 @@ body.is-fixed {
   color: f.color(neutral-600);
   line-height: 1.8;
 
-  .l-section--dark & { color: f.color(neutral-400); }
+  .l-section--dark & {
+    color: f.color(neutral-400);
+  }
 }
 
 // ==============================================
@@ -660,7 +676,9 @@ body.is-fixed {
   text-decoration: none;
   z-index: f.z(overlay);
   box-shadow: 0 4px 12px rgb(26 115 232 / 40%);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 
   &:hover {
     opacity: 0.85;
@@ -679,7 +697,8 @@ body.is-fixed {
   width: 100%;
   border-collapse: collapse;
 
-  th, td {
+  th,
+  td {
     padding: f.space(md) f.space(lg);
     text-align: left;
     border-bottom: 1px solid f.color(neutral-200);

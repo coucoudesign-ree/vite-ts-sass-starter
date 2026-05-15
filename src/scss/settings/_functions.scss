@@ -6,11 +6,11 @@
 // - 二段階fluid補間（320〜375軽補間 + 375〜1920通常補間）
 // ==============================================
 
-@use "sass:math";
-@use "sass:map";
-@use "sass:string";
-@use "sass:meta";
-@use "@scss/settings/variables" as v;
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:string';
+@use 'sass:meta';
+@use '@scss/settings/variables' as v;
 
 // ----------------------------------------------
 // 🌊 Fluid補間共通設定（参照専用）
@@ -29,7 +29,7 @@ $fluid-max-width: v.$fluid-max-width;
 }
 
 @function to-rem($value) {
-  @if math.unit($value) == "px" {
+  @if math.unit($value) == 'px' {
     @return math.div(strip-unit($value), 16) * 1rem;
   }
   @return $value;
@@ -38,7 +38,7 @@ $fluid-max-width: v.$fluid-max-width;
 @function rem($value, $base: 16) {
   @if math.is-unitless($value) {
     @return math.div($value, $base) * 1rem;
-  } @else if math.unit($value) == "px" {
+  } @else if math.unit($value) == 'px' {
     @return math.div($value, $base) * 1rem;
   } @else {
     @return $value;
@@ -52,7 +52,9 @@ $fluid-max-width: v.$fluid-max-width;
   @if map.has-key(v.$colors, $key) {
     @return map.get(v.$colors, $key);
   } @else if $fallback != null {
-    @return if(sass(map.has-key(v.$colors, $fallback)): map.get(v.$colors, $fallback); else: $fallback);
+    @return if(
+      sass(map.has-key(v.$colors, $fallback)): map.get(v.$colors, $fallback) ; else: $fallback
+    );
   }
   @error "❌ Unknown color key: #{$key}. Check _variables.scss";
 }
@@ -68,10 +70,12 @@ $fluid-max-width: v.$fluid-max-width;
 // 📏 Space / Font Size / Line Height / Shadow
 // ----------------------------------------------
 @function space($key, $as-rem: true) {
-  @if $key == 0 { @return 0; }
+  @if $key == 0 {
+    @return 0;
+  }
   @if map.has-key(v.$spaces, $key) {
     $v: map.get(v.$spaces, $key);
-    @return if(sass($as-rem): rem($v); else: $v);
+    @return if(sass($as-rem): rem($v) ; else: $v);
   }
   @error "❌ Unknown space key: #{$key}.";
 }
@@ -79,7 +83,7 @@ $fluid-max-width: v.$fluid-max-width;
 @function font-size($key, $as-rem: true) {
   @if map.has-key(v.$font-sizes, $key) {
     $v: map.get(v.$font-sizes, $key);
-    @return if(sass($as-rem): rem($v); else: $v);
+    @return if(sass($as-rem): rem($v) ; else: $v);
   }
   @error "❌ Unknown font-size key: #{$key}.";
 }
@@ -115,35 +119,41 @@ $fluid-max-width: v.$fluid-max-width;
 // ----------------------------------------------
 // 🌊 fluid-value()（二段階fluid補間対応）
 // ----------------------------------------------
-@function fluid-value(
-  $min,
-  $max: null,
-  $min-width: 320px,
-  $mid-width: 375px,
-  $max-width: 1920px
-) {
+@function fluid-value($min, $max: null, $min-width: 320px, $mid-width: 375px, $max-width: 1920px) {
   // mapキー対応
-  @if meta.type-of($min) == "string" { $min: map.get(v.$font-sizes, $min); }
-  @if $max != null and meta.type-of($max) == "string" { $max: map.get(v.$font-sizes, $max); }
+  @if meta.type-of($min) == 'string' {
+    $min: map.get(v.$font-sizes, $min);
+  }
+  @if $max != null and meta.type-of($max) == 'string' {
+    $max: map.get(v.$font-sizes, $max);
+  }
 
   $min: to-rem($min);
   $max: if(sass($max == null): $min; else: to-rem($max));
 
   // 1値指定時
   @if $max == null or $max == $min {
-    @return string.unquote("clamp(#{$min}, calc(#{$min} + ((100vw - #{$min-width}) / 100)), calc(#{$min} * 1.5))");
+    @return string.unquote(
+      'clamp(#{$min}, calc(#{$min} + ((100vw - #{$min-width}) / 100)), calc(#{$min} * 1.5))'
+    );
   }
 
   // ✅ 二段階fluid補間（320〜375軽補間 / 375〜1920通常補間）
-  @return string.unquote("clamp(#{$min}, calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$mid-width}) / (#{$max-width} - #{$mid-width}))), #{$max})");
+  @return string.unquote(
+    'clamp(#{$min}, calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$mid-width}) / (#{$max-width} - #{$mid-width}))), #{$max})'
+  );
 }
 
 // ----------------------------------------------
 // 🧩 fluid-space()（同範囲で可変）
 // ----------------------------------------------
 @function fluid-space($min, $max: null, $min-width: 320px, $mid-width: 375px, $max-width: 1920px) {
-  @if meta.type-of($min) == "string" { $min: space($min, false); }
-  @if $max != null and meta.type-of($max) == "string" { $max: space($max, false); }
+  @if meta.type-of($min) == 'string' {
+    $min: space($min, false);
+  }
+  @if $max != null and meta.type-of($max) == 'string' {
+    $max: space($max, false);
+  }
 
   $min: to-rem($min);
   $max: if(sass($max == null): $min; else: to-rem($max));
@@ -154,24 +164,32 @@ $fluid-max-width: v.$fluid-max-width;
 // ----------------------------------------------
 // 🧩 fluid-line-height()（同範囲で可変）
 // ----------------------------------------------
-@function fluid-line-height($min, $max: null, $min-width: 320px, $mid-width: 375px, $max-width: 1920px) {
-  @if meta.type-of($min) == "string" { $min: map.get(v.$line-heights, $min); }
-  @if $max != null and meta.type-of($max) == "string" { $max: map.get(v.$line-heights, $max); }
-
-  @if $max == null or $max == $min { @return $min; }
-
-  @return string.unquote("clamp(#{$min}, calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$mid-width}) / (#{$max-width} - #{$mid-width}))), #{$max})");
-}
-
-// ----------------------------------------------
-// 🧮 fluid-clamp()（fluid-value() のエイリアス）
-// ----------------------------------------------
-@function fluid-clamp(
+@function fluid-line-height(
   $min,
   $max: null,
   $min-width: 320px,
   $mid-width: 375px,
   $max-width: 1920px
 ) {
+  @if meta.type-of($min) == 'string' {
+    $min: map.get(v.$line-heights, $min);
+  }
+  @if $max != null and meta.type-of($max) == 'string' {
+    $max: map.get(v.$line-heights, $max);
+  }
+
+  @if $max == null or $max == $min {
+    @return $min;
+  }
+
+  @return string.unquote(
+    'clamp(#{$min}, calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$mid-width}) / (#{$max-width} - #{$mid-width}))), #{$max})'
+  );
+}
+
+// ----------------------------------------------
+// 🧮 fluid-clamp()（fluid-value() のエイリアス）
+// ----------------------------------------------
+@function fluid-clamp($min, $max: null, $min-width: 320px, $mid-width: 375px, $max-width: 1920px) {
   @return fluid-value($min, $max, $min-width, $mid-width, $max-width);
 }

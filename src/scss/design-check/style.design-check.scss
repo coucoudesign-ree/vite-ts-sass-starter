@@ -11,17 +11,17 @@
 // ----------------------------------------------
 // 1️⃣ Sass設定・トークン / 関数 / ミックスイン
 // ----------------------------------------------
-@use "@scss/settings/variables";
-@use "@scss/settings/functions";
-@use "@scss/settings/mixins";
+@use '@scss/settings/variables';
+@use '@scss/settings/functions';
+@use '@scss/settings/mixins';
 
 // ----------------------------------------------
 // 2️⃣ ベーススタイル（Reset + Base）
 // ----------------------------------------------
-@use "@scss/foundation/reset";
-@use "@scss/foundation/base";
+@use '@scss/foundation/reset';
+@use '@scss/foundation/base';
 
 // ----------------------------------------------
 // 3️⃣ デザイン確認用モジュール
 // ----------------------------------------------
-@use "@scss/design-check/design-check";
+@use '@scss/design-check/design-check';

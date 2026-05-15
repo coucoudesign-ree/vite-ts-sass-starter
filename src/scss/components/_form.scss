@@ -4,8 +4,8 @@
 // 汎用コンタクトフォーム（BEM）
 // ==============================================
 
-@use "@scss/settings/functions" as f;
-@use "@scss/settings/mixins" as m;
+@use '@scss/settings/functions' as f;
+@use '@scss/settings/mixins' as m;
 
 // ローカル定数
 $_error-color: #dc2626;
@@ -84,7 +84,9 @@ $_border-radius: f.radius(sm);
   background-color: #fff;
   border: 1px solid $_border-color;
   border-radius: $_border-radius;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   appearance: none;
 
   &::placeholder {
@@ -145,7 +147,7 @@ $_border-radius: f.radius(sm);
   font-size: f.font-size(xs);
   color: f.color(neutral-500);
 
-  &[data-error="true"] {
+  &[data-error='true'] {
     color: $_error-color;
   }
 }
@@ -208,7 +210,10 @@ $_border-radius: f.radius(sm);
   background-color: f.color(primary);
   border-radius: f.radius(full);
   cursor: pointer;
-  transition: background-color 0.25s ease, opacity 0.25s ease, transform 0.15s ease;
+  transition:
+    background-color 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.15s ease;
 
   @include m.respond(md) {
     width: auto;

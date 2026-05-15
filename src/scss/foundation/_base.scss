@@ -7,18 +7,17 @@
 // 🗓️ 2025-12-19 JST
 // =========================================
 
-@use "@scss/settings/functions" as f;
-@use "@scss/settings/mixins" as m;
-@use "@scss/settings/variables" as v;
+@use '@scss/settings/functions' as f;
+@use '@scss/settings/mixins' as m;
+@use '@scss/settings/variables' as v;
 
 // ----------------------------------------------
 // 🧱 HTML / BODY
 // ----------------------------------------------
 html {
   font-size: f.font-size(base);
-  font-feature-settings: "palt";
+  font-feature-settings: 'palt';
   scroll-behavior: auto; // JS(GSAP)制御を想定
-  
 }
 
 body {
@@ -44,7 +43,9 @@ body {
 // ----------------------------------------------
 button {
   cursor: pointer;
-  transition: opacity 0.25s ease, transform 0.2s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.2s ease;
 
   &:hover:not([disabled]) {
     opacity: 0.85;

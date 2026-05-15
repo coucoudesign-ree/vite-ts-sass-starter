@@ -9,8 +9,8 @@
 // 🗓️ 2025-12-19 JST
 // ==============================================
 
-@use "sass:map";
-@use "@scss/settings/functions" as f;
+@use 'sass:map';
+@use '@scss/settings/functions' as f;
 
 // ----------------------------------------------
 // 🧠 Media Queries
@@ -21,11 +21,15 @@
 // ----------------------------------------------
 @mixin respond($bp) {
   @if type-of($bp) == number {
-    @media (min-width: #{$bp}) { @content; }
+    @media (min-width: #{$bp}) {
+      @content;
+    }
   } @else {
     $breakpoint: f.bp($bp);
     @if $breakpoint != null {
-      @media (min-width: #{$breakpoint}) { @content; }
+      @media (min-width: #{$breakpoint}) {
+        @content;
+      }
     } @else {
       @warn "⚠️ respond(): breakpoint '#{$bp}' not found.";
     }
@@ -34,11 +38,15 @@
 
 @mixin respond-down($bp) {
   @if type-of($bp) == number {
-    @media (max-width: #{$bp}) { @content; }
+    @media (max-width: #{$bp}) {
+      @content;
+    }
   } @else {
     $breakpoint: f.bp($bp);
     @if $breakpoint != null {
-      @media (max-width: #{$breakpoint}) { @content; }
+      @media (max-width: #{$breakpoint}) {
+        @content;
+      }
     } @else {
       @warn "⚠️ respond-down(): breakpoint '#{$bp}' not found.";
     }
@@ -72,7 +80,7 @@
     h3: f.font-size(xl),
     h4: f.font-size(lg),
     h5: f.font-size(md),
-    h6: f.font-size(sm)
+    h6: f.font-size(sm),
   );
 
   $margin-map: (
@@ -81,7 +89,7 @@
     h3: f.space(md),
     h4: f.space(md),
     h5: f.space(sm),
-    h6: f.space(xs)
+    h6: f.space(xs),
   );
 
   font-size: map.get($size-map, $level);
